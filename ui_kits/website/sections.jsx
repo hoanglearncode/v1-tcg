@@ -63,16 +63,34 @@ function Hero(){
 }
 function go(h){const el=document.querySelector(h);if(el){const y=el.getBoundingClientRect().top+window.scrollY-80;window.scrollTo({top:y,behavior:'smooth'})}}
 function Stats(){
-  const names=['Đối tác 1','Đối tác 2','Đối tác 3','Đối tác 4','Đối tác 5','Đối tác 6','Đối tác 7','Đối tác 8'];
-  const Row=({dur,delay})=><div style={{overflow:'hidden',width:'100%'}}>
+  // Logo đối tác/thương hiệu (demo) – lấy từ logo.dev theo domain. Thay bằng logo thật khi có.
+  const LOGO_TOKEN='pk_X-1ZO13GSgeOoUrIuJ6GMQ';
+  const logo=(domain)=>`https://img.logo.dev/${domain}?token=${LOGO_TOKEN}&format=png&size=200&retina=true`;
+  const partners=[
+    {name:'Vinamilk',domain:'vinamilk.com.vn'},
+    {name:'Viettel',domain:'viettel.com.vn'},
+    {name:'Vietcombank',domain:'vietcombank.com.vn'},
+    {name:'Vietnam Airlines',domain:'vietnamairlines.com'},
+    {name:'VinFast',domain:'vinfastauto.com'},
+    {name:'FPT',domain:'fpt.com'},
+    {name:'Techcombank',domain:'techcombank.com.vn'},
+    {name:'Highlands Coffee',domain:'highlandscoffee.com.vn'},
+    {name:'MB Bank',domain:'mbbank.com.vn'},
+    {name:'Thế Giới Di Động',domain:'thegioididong.com'},
+    {name:'BIDV',domain:'bidv.com.vn'},
+    {name:'Masan',domain:'masangroup.com'}
+  ];
+  const Row=({items,dur,delay})=><div style={{overflow:'hidden',width:'100%'}}>
     <div style={{display:'flex',gap:16,width:'max-content',animation:`tcgmarquee ${dur}s linear ${delay}s infinite`}}>
-      {[...names,...names].map((n,i)=><div key={i} style={{width:140,height:52,flex:'none',borderRadius:'var(--radius-md)',background:'#fff',border:'1px dashed var(--slate-300)',display:'grid',placeItems:'center',fontSize:'.6875rem',color:'var(--slate-400)',letterSpacing:'.05em'}}>{n.toUpperCase()}</div>)}
+      {[...items,...items].map((p,i)=><div key={i} title={p.name} style={{width:140,height:52,flex:'none',borderRadius:'var(--radius-md)',background:'#fff',border:'1px solid var(--slate-200)',display:'grid',placeItems:'center',padding:'0 16px',boxShadow:'var(--shadow-sm)'}}>
+        <img src={logo(p.domain)} alt={p.name} loading="lazy" style={{maxWidth:'100%',maxHeight:28,objectFit:'contain',filter:'grayscale(1)',opacity:.7,transition:'filter .2s,opacity .2s'}} onMouseOver={e=>{e.currentTarget.style.filter='none';e.currentTarget.style.opacity=1;}} onMouseOut={e=>{e.currentTarget.style.filter='grayscale(1)';e.currentTarget.style.opacity=.7;}} onError={e=>{e.currentTarget.style.display='none';e.currentTarget.parentNode.textContent=p.name;e.currentTarget.parentNode.style.fontSize='.75rem';e.currentTarget.parentNode.style.color='var(--slate-500)';e.currentTarget.parentNode.style.fontWeight='600';}}/>
+      </div>)}
     </div></div>;
   return <section style={{background:'var(--muted)',padding:'56px 0'}}>
     <style>{'@keyframes tcgmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}@media (prefers-reduced-motion: reduce){[style*="tcgmarquee"]{animation:none!important}}'}</style>
     <div style={{...container,display:'grid',gap:14}}>
-      <Row dur={30} delay={0}/>
-      <Row dur={18} delay={0}/>
+      <Row items={partners.slice(0,6)} dur={30} delay={0}/>
+      <Row items={partners.slice(6)} dur={18} delay={0}/>
     </div></section>;
 }
 function SectionHead({kicker,title,sub}){
