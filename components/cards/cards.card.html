@@ -10,9 +10,9 @@
 const NS=window.ToNCUADVDesignSystem_ce468e;
 const {LocationCard,CaseStudyCard}=NS;
 function Card(){return <div style={{display:'flex',gap:16,alignItems:'flex-start'}}>
-  <LocationCard name="Ngã tư Sở, Hà Nội" image="https://picsum.photos/seed/tcg-metro-3/640/480" type="Billboard" city="Hà Nội" size="8×12m" price="45.000.000đ/tháng" status="available" score={92} reason="Lưu lượng cao, gần khu ăn uống" onAdd={()=>{}} style={{width:250}}/>
+  <LocationCard name="Ngã tư Sở, Hà Nội" image="../../assets/ooh/hanoi-133-stkm.jpg" type="Billboard" city="Hà Nội" size="8×12m" price="45.000.000đ/tháng" status="available" score={92} reason="Lưu lượng cao, gần khu ăn uống" onAdd={()=>{}} style={{width:250}}/>
   <LocationCard name="Nội Bài T2, băng chuyền" type="Sân bay" city="Hà Nội" size="6×4m" price="60.000.000đ/tháng" status="booked" score={85} style={{width:200}}/>
-  <CaseStudyCard brand="Thương hiệu A" image="https://picsum.photos/seed/tcg-case-fmcg/800/450" industry="FMCG" result="12 billboard nội đô" onDetail={()=>{}} style={{width:200}}/>
+  <CaseStudyCard brand="Thương hiệu A" image="../../assets/ooh/phapvan-19a.png" industry="FMCG" result="12 billboard nội đô" onDetail={()=>{}} style={{width:200}}/>
 </div>}
 ReactDOM.createRoot(document.getElementById('root')).render(<Card/>);
 </script></body></html>

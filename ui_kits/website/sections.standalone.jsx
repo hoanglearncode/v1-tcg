@@ -24,10 +24,10 @@ function Navbar({onQuote}){
     </div></header>;
 }
 const HERO_SLIDES=[
-  {img:'https://picsum.photos/seed/tcg-metro-12/1600/900',eyebrow:'Từ 2003 đến nay',title:'Hơn 20 năm cùng ngành quảng cáo Việt Nam',body:'Từ tổ chức sự kiện, in ấn đến biển quảng cáo tấm lớn, Toàn Cầu ADV trưởng thành cùng ngành OOH Việt Nam qua từng giai đoạn.'},
-  {img:'https://picsum.photos/seed/tcg-airport-noibai/1600/900',eyebrow:'Mạng lưới sân bay',title:'Tiếp cận nhóm khách chi trả cao',body:'Hệ thống mặt biển tại Nội Bài, Tân Sơn Nhất và các sân bay lớn, nơi tập trung doanh nhân, khách du lịch và khách quốc tế.'},
-  {img:'https://picsum.photos/seed/tcg-metro-2/1600/900',eyebrow:'Toàn quốc',title:'Billboard, LED và nhà chờ phủ khắp các tỉnh thành',body:'~730 vị trí quảng cáo ngoài trời từ cao tốc, cửa ngõ đô thị đến nhà chờ xe bus trên khắp Việt Nam.'},
-  {img:'https://picsum.photos/seed/tcg-ooh-11/1600/900',eyebrow:'Chuyển đổi số',title:'Bản đồ vị trí và điểm AI gợi ý theo ngành hàng',body:'Tự khám phá vị trí phù hợp, xem điểm AI giải thích rõ lý do, và nhận báo giá PDF trong vài phút.'}
+  {img:'../../assets/ooh/phapvan-51a.png',eyebrow:'Từ 2003 đến nay',title:'Hơn 20 năm cùng ngành quảng cáo Việt Nam',body:'Từ tổ chức sự kiện, in ấn đến biển quảng cáo tấm lớn, Toàn Cầu ADV trưởng thành cùng ngành OOH Việt Nam qua từng giai đoạn.'},
+  {img:'../../assets/ooh/noibai-41b.jpg',eyebrow:'Mạng lưới sân bay',title:'Tiếp cận nhóm khách chi trả cao',body:'Hệ thống mặt biển tại Nội Bài, Tân Sơn Nhất và các sân bay lớn, nơi tập trung doanh nhân, khách du lịch và khách quốc tế.'},
+  {img:'../../assets/ooh/phapvan-19a.png',eyebrow:'Toàn quốc',title:'Billboard, LED và nhà chờ phủ khắp các tỉnh thành',body:'~730 vị trí quảng cáo ngoài trời từ cao tốc, cửa ngõ đô thị đến nhà chờ xe bus trên khắp Việt Nam.'},
+  {img:'../../assets/ooh/quangninh-hl16.jpg',eyebrow:'Chuyển đổi số',title:'Bản đồ vị trí và điểm AI gợi ý theo ngành hàng',body:'Tự khám phá vị trí phù hợp, xem điểm AI giải thích rõ lý do, và nhận báo giá PDF trong vài phút.'}
 ];
 function Hero(){
   const [i,setI]=React.useState(0);
@@ -83,11 +83,11 @@ function SectionHead({kicker,title,sub}){
   </div>;
 }
 const FEATURED_SERVICES=[
-  {slug:'san-bay',icon:'plane',label:'Sân bay',title:'Tiếp cận nhóm khách chi trả cao',desc:'Hệ thống mặt biển tại Nội Bài, Tân Sơn Nhất và các sân bay lớn: băng chuyền, sảnh đến/đi, ống lồng. Tiếp cận doanh nhân, khách du lịch và khách quốc tế trong thời gian chờ chuyến kéo dài.',img:'https://picsum.photos/seed/tcg-airport-noibai/800/520',cta:'Xem dịch vụ sân bay'},
-  {slug:'billboard',icon:'rectangle-horizontal',label:'Billboard',title:'Hiện diện tại cửa ngõ và trục đường lớn',desc:'Biển quảng cáo tấm lớn tại nút giao, cửa ngõ đô thị và cao tốc trên 30+ tỉnh thành. Khảo sát, thiết kế, in ấn và thi công trọn gói, hỗ trợ giấy phép quảng cáo.',img:'https://picsum.photos/seed/tcg-metro-2/800/520',cta:'Xem dịch vụ billboard'},
-  {slug:'led',icon:'monitor',label:'Màn hình LED',title:'Nội dung linh hoạt, đổi theo khung giờ',desc:'LED ngoài trời và LCD/frame tại thang máy, trung tâm thương mại. Đặt theo spot 15 đến 30 giây, đổi nội dung nhanh, báo cáo tần suất phát thực tế.',img:'https://picsum.photos/seed/tcg-metro-6/800/520',cta:'Xem dịch vụ LED'},
-  {slug:'pano',icon:'lamp',label:'Pano · Hộp đèn',title:'Phủ dày theo tuyến, chi phí hợp lý',desc:'Quảng cáo tại nhà chờ xe bus, giải phân cách và tuyến phố. Chi phí vào cửa thấp, phù hợp chiến dịch khu vực và mở điểm bán, có combo nhiều mặt giảm chi phí.',img:'https://picsum.photos/seed/tcg-ooh-11/800/520',cta:'Xem dịch vụ pano'},
-  {slug:null,icon:'briefcase',label:'Dự án tiêu biểu',title:'Đồng hành cùng 400+ nhãn hàng',desc:'Từ FMCG, ngân hàng đến hàng không và công nghệ. Xem các chiến dịch OOH tiêu biểu Toàn Cầu ADV đã triển khai trên toàn quốc.',img:'https://picsum.photos/seed/tcg-case-fnb/800/520',cta:'Xem dự án tiêu biểu',href:'news.html'}
+  {slug:'san-bay',icon:'plane',label:'Sân bay',title:'Tiếp cận nhóm khách chi trả cao',desc:'Hệ thống mặt biển tại Nội Bài, Tân Sơn Nhất và các sân bay lớn: băng chuyền, sảnh đến/đi, ống lồng. Tiếp cận doanh nhân, khách du lịch và khách quốc tế trong thời gian chờ chuyến kéo dài.',img:'../../assets/ooh/noibai-41b.jpg',cta:'Xem dịch vụ sân bay'},
+  {slug:'billboard',icon:'rectangle-horizontal',label:'Billboard',title:'Hiện diện tại cửa ngõ và trục đường lớn',desc:'Biển quảng cáo tấm lớn tại nút giao, cửa ngõ đô thị và cao tốc trên 30+ tỉnh thành. Khảo sát, thiết kế, in ấn và thi công trọn gói, hỗ trợ giấy phép quảng cáo.',img:'../../assets/ooh/phapvan-19a.png',cta:'Xem dịch vụ billboard'},
+  {slug:'led',icon:'monitor',label:'Màn hình LED',title:'Nội dung linh hoạt, đổi theo khung giờ',desc:'LED ngoài trời và LCD/frame tại thang máy, trung tâm thương mại. Đặt theo spot 15 đến 30 giây, đổi nội dung nhanh, báo cáo tần suất phát thực tế.',img:'../../assets/ooh/hanoi-cg01-nct.png',cta:'Xem dịch vụ LED'},
+  {slug:'pano',icon:'lamp',label:'Pano · Hộp đèn',title:'Phủ dày theo tuyến, chi phí hợp lý',desc:'Quảng cáo tại nhà chờ xe bus, giải phân cách và tuyến phố. Chi phí vào cửa thấp, phù hợp chiến dịch khu vực và mở điểm bán, có combo nhiều mặt giảm chi phí.',img:'../../assets/ooh/quangninh-hl16.jpg',cta:'Xem dịch vụ pano'},
+  {slug:null,icon:'briefcase',label:'Dự án tiêu biểu',title:'Đồng hành cùng 400+ nhãn hàng',desc:'Từ FMCG, ngân hàng đến hàng không và công nghệ. Xem các chiến dịch OOH tiêu biểu Toàn Cầu ADV đã triển khai trên toàn quốc.',img:'../../assets/ooh/haiphong-caurao2.jpg',cta:'Xem dự án tiêu biểu',href:'news.html'}
 ];
 function Spotlight(){
   const [i,setI]=React.useState(0);

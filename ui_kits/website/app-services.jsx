@@ -1,6 +1,6 @@
 const NSS=window.ToNCUADVDesignSystem_ce468e;
 const {Button}=NSS||{};
-const svcImgs={['san-bay']:'https://picsum.photos/seed/tcg-airport-noibai/800/520',billboard:'https://picsum.photos/seed/tcg-metro-2/800/520',led:'https://picsum.photos/seed/tcg-metro-6/800/520',pano:'https://picsum.photos/seed/tcg-ooh-11/800/520'};
+const svcImgs={['san-bay']:'../../assets/ooh/noibai-41b.jpg',billboard:'../../assets/ooh/phapvan-19a.png',led:'../../assets/ooh/hanoi-cg01-nct.png',pano:'../../assets/ooh/quangninh-hl16.jpg'};
 function App(){
   const D=window.TCG_DATA;
   const goSvc=(slug)=>{const el=document.getElementById('svc-'+slug);if(el){const y=el.getBoundingClientRect().top+window.scrollY-130;window.scrollTo({top:y,behavior:'smooth'})}};

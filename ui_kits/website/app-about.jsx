@@ -13,7 +13,7 @@ function App(){
   return <div style={{fontFamily:'var(--font-sans)'}}>
     <window.Navbar/>
     <section style={{position:'relative',color:'#fff',overflow:'hidden',background:'var(--blue-900)'}}>
-      <img src="https://picsum.photos/seed/tcg-about-hero/1600/800" alt="Toàn Cầu ADV" style={{position:'absolute',right:0,top:0,width:'55%',height:'100%',objectFit:'cover',opacity:.9}}/>
+      <img src="../../assets/ooh/phapvan-57a.png" alt="Toàn Cầu ADV" style={{position:'absolute',right:0,top:0,width:'55%',height:'100%',objectFit:'cover',opacity:.9}}/>
       <div style={{position:'absolute',inset:0,background:'linear-gradient(100deg,var(--blue-900) 0%,var(--blue-900) 42%,rgba(13,47,94,.7) 56%,rgba(13,47,94,0) 74%)'}}></div>
       <div style={{position:'relative',...window.container,padding:'88px 32px 72px',display:'grid',gap:16,maxWidth:640}}>
         <span style={{fontSize:'.8125rem',fontWeight:700,letterSpacing:'.1em',textTransform:'uppercase',color:'var(--blue-200)'}}>Về chúng tôi</span>

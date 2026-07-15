@@ -2546,7 +2546,7 @@ function App() {
       background: 'var(--blue-900)'
     }
   }, /*#__PURE__*/React.createElement("img", {
-    src: "https://picsum.photos/seed/tcg-about-hero/1600/800",
+    src: "../../assets/ooh/phapvan-57a.png",
     alt: "To\xE0n C\u1EA7u ADV",
     style: {
       position: 'absolute',
@@ -3350,10 +3350,10 @@ const {
   Button
 } = NSS || {};
 const svcImgs = {
-  ['san-bay']: 'https://picsum.photos/seed/tcg-airport-noibai/800/520',
-  billboard: 'https://picsum.photos/seed/tcg-metro-2/800/520',
-  led: 'https://picsum.photos/seed/tcg-metro-6/800/520',
-  pano: 'https://picsum.photos/seed/tcg-ooh-11/800/520'
+  ['san-bay']: '../../assets/ooh/noibai-41b.jpg',
+  billboard: '../../assets/ooh/phapvan-19a.png',
+  led: '../../assets/ooh/hanoi-cg01-nct.png',
+  pano: '../../assets/ooh/quangninh-hl16.jpg'
 };
 function App() {
   const D = window.TCG_DATA;
@@ -3755,7 +3755,7 @@ window.TCG_DATA = {
     id: 'HN-BB-042',
     lat: 21.003,
     lng: 105.821,
-    img: 'https://picsum.photos/seed/tcg-metro-3/640/480',
+    img: '../../assets/ooh/hanoi-133-stkm.jpg',
     name: 'Ngã tư Sở, Hà Nội',
     type: 'Billboard',
     city: 'Hà Nội',
@@ -3773,7 +3773,7 @@ window.TCG_DATA = {
     id: 'HN-AP-011',
     lat: 21.214,
     lng: 105.803,
-    img: 'https://picsum.photos/seed/tcg-airport-noibai/640/480',
+    img: '../../assets/ooh/noibai-41b.jpg',
     name: 'Nội Bài T2, băng chuyền đến',
     type: 'Sân bay',
     city: 'Hà Nội',
@@ -3791,7 +3791,7 @@ window.TCG_DATA = {
     id: 'HN-LED-007',
     lat: 21.016,
     lng: 105.779,
-    img: 'https://picsum.photos/seed/tcg-metro-6/640/480',
+    img: '../../assets/ooh/hanoi-cg01-nct.png',
     name: 'LED Phạm Hùng, Hà Nội',
     type: 'LED',
     city: 'Hà Nội',
@@ -3809,7 +3809,7 @@ window.TCG_DATA = {
     id: 'SG-BB-118',
     lat: 10.801,
     lng: 106.711,
-    img: 'https://picsum.photos/seed/tcg-metro-2/640/480',
+    img: '../../assets/ooh/phapvan-19a.png',
     name: 'Cầu vượt Hàng Xanh, TP.HCM',
     type: 'Billboard',
     city: 'TP.HCM',
@@ -3827,7 +3827,7 @@ window.TCG_DATA = {
     id: 'SG-AP-023',
     lat: 10.813,
     lng: 106.664,
-    img: 'https://picsum.photos/seed/tcg-airport-tsn/640/480',
+    img: '../../assets/ooh/vungtau-sgvt.jpg',
     name: 'Tân Sơn Nhất, sảnh quốc nội',
     type: 'Sân bay',
     city: 'TP.HCM',
@@ -3845,7 +3845,7 @@ window.TCG_DATA = {
     id: 'DN-PN-031',
     lat: 16.061,
     lng: 108.245,
-    img: 'https://picsum.photos/seed/tcg-ooh-11/640/480',
+    img: '../../assets/ooh/quangninh-hl16.jpg',
     name: 'Pano Võ Nguyên Giáp, Đà Nẵng',
     type: 'Pano',
     city: 'Đà Nẵng',
@@ -3944,54 +3944,54 @@ window.TCG_DATA = {
     label: 'Roadshow, tổ chức sự kiện'
   }],
   news: [{
-    img: 'https://picsum.photos/seed/tcg-metro-8/800/450',
+    img: '../../assets/ooh/bacninh-10b.png',
     date: '02.07.2026',
     tag: 'Hệ thống vị trí',
     title: 'Toàn Cầu mở rộng hệ thống LED tại trục Phạm Hùng',
     excerpt: 'Bổ sung 4 màn hình LED mới tại khu văn phòng phía Tây Hà Nội, khai thác từ quý 3/2026.'
   }, {
-    img: 'https://picsum.photos/seed/tcg-metro-2/800/450',
+    img: '../../assets/ooh/phapvan-19a.png',
     date: '18.06.2026',
     tag: 'Sản phẩm số',
     title: 'Ra mắt bản đồ vị trí OOH tra cứu trực tuyến',
     excerpt: 'Khách hàng tự khám phá vị trí, xem điểm AI theo ngành hàng và tạo báo giá PDF trong vài phút.'
   }, {
-    img: 'https://picsum.photos/seed/tcg-ooh-11/800/450',
+    img: '../../assets/ooh/quangninh-hl16.jpg',
     date: '05.06.2026',
     tag: 'Hợp tác',
     title: 'Hợp tác quảng cáo tại nhà chờ xe bus 5 tỉnh thành',
     excerpt: 'Mạng lưới nhà chờ mở rộng tại Hà Nội, TP.HCM, Đà Nẵng, Cần Thơ và Nghệ An.'
   }, {
-    img: 'https://picsum.photos/seed/tcg-metro-12/800/450',
+    img: '../../assets/ooh/phapvan-51a.png',
     date: '22.05.2026',
     tag: 'Thị trường OOH',
     title: 'Xu hướng OOH 2026: dữ liệu vị trí và điểm phù hợp ngành hàng',
     excerpt: 'Quảng cáo ngoài trời chuyển dịch sang mô hình chọn vị trí theo dữ liệu lưu lượng và tệp khách.'
   }, {
-    img: 'https://picsum.photos/seed/tcg-airport-noibai/800/450',
+    img: '../../assets/ooh/noibai-41b.jpg',
     date: '10.05.2026',
     tag: 'Hệ thống vị trí',
     title: 'Bổ sung 12 mặt biển tại nhà ga T2 Nội Bài',
     excerpt: 'Các vị trí băng chuyền và sảnh đến quốc tế sẵn sàng khai thác từ tháng 6.'
   }, {
-    img: 'https://picsum.photos/seed/tcg-metro-4/800/450',
+    img: '../../assets/ooh/noibai-24a1.jpg',
     date: '28.04.2026',
     tag: 'Hợp tác',
     title: 'Đồng hành cùng hãng hàng không trong chiến dịch hè 2026',
     excerpt: 'Chuỗi vị trí sân bay hai miền phục vụ chiến dịch quảng bá đường bay mới.'
   }],
   cases: [{
-    img: 'https://picsum.photos/seed/tcg-case-fnb/800/450',
+    img: '../../assets/ooh/haiphong-caurao2.jpg',
     brand: 'Nhãn hàng F&B',
     industry: 'F&B',
     result: 'Phủ 12 billboard nội đô Hà Nội'
   }, {
-    img: 'https://picsum.photos/seed/tcg-metro-4/800/450',
+    img: '../../assets/ooh/noibai-24a1.jpg',
     brand: 'Hãng hàng không',
     industry: 'Hàng không',
     result: 'Chuỗi vị trí sân bay 2 miền'
   }, {
-    img: 'https://picsum.photos/seed/tcg-case-tech/800/450',
+    img: '../../assets/ooh/quangninh-hl30.jpg',
     brand: 'Thương hiệu điện tử',
     industry: 'Điện tử',
     result: 'LED giờ vàng trục văn phòng'
@@ -4137,22 +4137,22 @@ function Navbar({
   }, "Y\xEAu c\u1EA7u b\xE1o gi\xE1")));
 }
 const HERO_SLIDES = [{
-  img: 'https://picsum.photos/seed/tcg-metro-12/1600/900',
+  img: '../../assets/ooh/phapvan-51a.png',
   eyebrow: 'Từ 2003 đến nay',
   title: 'Hơn 20 năm cùng ngành quảng cáo Việt Nam',
   body: 'Từ tổ chức sự kiện, in ấn đến biển quảng cáo tấm lớn, Toàn Cầu ADV trưởng thành cùng ngành OOH Việt Nam qua từng giai đoạn.'
 }, {
-  img: 'https://picsum.photos/seed/tcg-airport-noibai/1600/900',
+  img: '../../assets/ooh/noibai-41b.jpg',
   eyebrow: 'Mạng lưới sân bay',
   title: 'Tiếp cận nhóm khách chi trả cao',
   body: 'Hệ thống mặt biển tại Nội Bài, Tân Sơn Nhất và các sân bay lớn, nơi tập trung doanh nhân, khách du lịch và khách quốc tế.'
 }, {
-  img: 'https://picsum.photos/seed/tcg-metro-2/1600/900',
+  img: '../../assets/ooh/phapvan-19a.png',
   eyebrow: 'Toàn quốc',
   title: 'Billboard, LED và nhà chờ phủ khắp các tỉnh thành',
   body: '~730 vị trí quảng cáo ngoài trời từ cao tốc, cửa ngõ đô thị đến nhà chờ xe bus trên khắp Việt Nam.'
 }, {
-  img: 'https://picsum.photos/seed/tcg-ooh-11/1600/900',
+  img: '../../assets/ooh/quangninh-hl16.jpg',
   eyebrow: 'Chuyển đổi số',
   title: 'Bản đồ vị trí và điểm AI gợi ý theo ngành hàng',
   body: 'Tự khám phá vị trí phù hợp, xem điểm AI giải thích rõ lý do, và nhận báo giá PDF trong vài phút.'
@@ -4446,7 +4446,7 @@ const FEATURED_SERVICES = [{
   label: 'Sân bay',
   title: 'Tiếp cận nhóm khách chi trả cao',
   desc: 'Hệ thống mặt biển tại Nội Bài, Tân Sơn Nhất và các sân bay lớn: băng chuyền, sảnh đến/đi, ống lồng. Tiếp cận doanh nhân, khách du lịch và khách quốc tế trong thời gian chờ chuyến kéo dài.',
-  img: 'https://picsum.photos/seed/tcg-airport-noibai/800/520',
+  img: '../../assets/ooh/noibai-41b.jpg',
   cta: 'Xem dịch vụ sân bay'
 }, {
   slug: 'billboard',
@@ -4454,7 +4454,7 @@ const FEATURED_SERVICES = [{
   label: 'Billboard',
   title: 'Hiện diện tại cửa ngõ và trục đường lớn',
   desc: 'Biển quảng cáo tấm lớn tại nút giao, cửa ngõ đô thị và cao tốc trên 30+ tỉnh thành. Khảo sát, thiết kế, in ấn và thi công trọn gói, hỗ trợ giấy phép quảng cáo.',
-  img: 'https://picsum.photos/seed/tcg-metro-2/800/520',
+  img: '../../assets/ooh/phapvan-19a.png',
   cta: 'Xem dịch vụ billboard'
 }, {
   slug: 'led',
@@ -4462,7 +4462,7 @@ const FEATURED_SERVICES = [{
   label: 'Màn hình LED',
   title: 'Nội dung linh hoạt, đổi theo khung giờ',
   desc: 'LED ngoài trời và LCD/frame tại thang máy, trung tâm thương mại. Đặt theo spot 15 đến 30 giây, đổi nội dung nhanh, báo cáo tần suất phát thực tế.',
-  img: 'https://picsum.photos/seed/tcg-metro-6/800/520',
+  img: '../../assets/ooh/hanoi-cg01-nct.png',
   cta: 'Xem dịch vụ LED'
 }, {
   slug: 'pano',
@@ -4470,7 +4470,7 @@ const FEATURED_SERVICES = [{
   label: 'Pano · Hộp đèn',
   title: 'Phủ dày theo tuyến, chi phí hợp lý',
   desc: 'Quảng cáo tại nhà chờ xe bus, giải phân cách và tuyến phố. Chi phí vào cửa thấp, phù hợp chiến dịch khu vực và mở điểm bán, có combo nhiều mặt giảm chi phí.',
-  img: 'https://picsum.photos/seed/tcg-ooh-11/800/520',
+  img: '../../assets/ooh/quangninh-hl16.jpg',
   cta: 'Xem dịch vụ pano'
 }, {
   slug: null,
@@ -4478,7 +4478,7 @@ const FEATURED_SERVICES = [{
   label: 'Dự án tiêu biểu',
   title: 'Đồng hành cùng 400+ nhãn hàng',
   desc: 'Từ FMCG, ngân hàng đến hàng không và công nghệ. Xem các chiến dịch OOH tiêu biểu Toàn Cầu ADV đã triển khai trên toàn quốc.',
-  img: 'https://picsum.photos/seed/tcg-case-fnb/800/520',
+  img: '../../assets/ooh/haiphong-caurao2.jpg',
   cta: 'Xem dự án tiêu biểu',
   href: 'news.html'
 }];
@@ -4729,22 +4729,22 @@ function Navbar({
   }, "Y\xEAu c\u1EA7u b\xE1o gi\xE1")));
 }
 const HERO_SLIDES = [{
-  img: 'https://picsum.photos/seed/tcg-metro-12/1600/900',
+  img: '../../assets/ooh/phapvan-51a.png',
   eyebrow: 'Từ 2003 đến nay',
   title: 'Hơn 20 năm cùng ngành quảng cáo Việt Nam',
   body: 'Từ tổ chức sự kiện, in ấn đến biển quảng cáo tấm lớn, Toàn Cầu ADV trưởng thành cùng ngành OOH Việt Nam qua từng giai đoạn.'
 }, {
-  img: 'https://picsum.photos/seed/tcg-airport-noibai/1600/900',
+  img: '../../assets/ooh/noibai-41b.jpg',
   eyebrow: 'Mạng lưới sân bay',
   title: 'Tiếp cận nhóm khách chi trả cao',
   body: 'Hệ thống mặt biển tại Nội Bài, Tân Sơn Nhất và các sân bay lớn, nơi tập trung doanh nhân, khách du lịch và khách quốc tế.'
 }, {
-  img: 'https://picsum.photos/seed/tcg-metro-2/1600/900',
+  img: '../../assets/ooh/phapvan-19a.png',
   eyebrow: 'Toàn quốc',
   title: 'Billboard, LED và nhà chờ phủ khắp các tỉnh thành',
   body: '~730 vị trí quảng cáo ngoài trời từ cao tốc, cửa ngõ đô thị đến nhà chờ xe bus trên khắp Việt Nam.'
 }, {
-  img: 'https://picsum.photos/seed/tcg-ooh-11/1600/900',
+  img: '../../assets/ooh/quangninh-hl16.jpg',
   eyebrow: 'Chuyển đổi số',
   title: 'Bản đồ vị trí và điểm AI gợi ý theo ngành hàng',
   body: 'Tự khám phá vị trí phù hợp, xem điểm AI giải thích rõ lý do, và nhận báo giá PDF trong vài phút.'
@@ -5038,7 +5038,7 @@ const FEATURED_SERVICES = [{
   label: 'Sân bay',
   title: 'Tiếp cận nhóm khách chi trả cao',
   desc: 'Hệ thống mặt biển tại Nội Bài, Tân Sơn Nhất và các sân bay lớn: băng chuyền, sảnh đến/đi, ống lồng. Tiếp cận doanh nhân, khách du lịch và khách quốc tế trong thời gian chờ chuyến kéo dài.',
-  img: 'https://picsum.photos/seed/tcg-airport-noibai/800/520',
+  img: '../../assets/ooh/noibai-41b.jpg',
   cta: 'Xem dịch vụ sân bay'
 }, {
   slug: 'billboard',
@@ -5046,7 +5046,7 @@ const FEATURED_SERVICES = [{
   label: 'Billboard',
   title: 'Hiện diện tại cửa ngõ và trục đường lớn',
   desc: 'Biển quảng cáo tấm lớn tại nút giao, cửa ngõ đô thị và cao tốc trên 30+ tỉnh thành. Khảo sát, thiết kế, in ấn và thi công trọn gói, hỗ trợ giấy phép quảng cáo.',
-  img: 'https://picsum.photos/seed/tcg-metro-2/800/520',
+  img: '../../assets/ooh/phapvan-19a.png',
   cta: 'Xem dịch vụ billboard'
 }, {
   slug: 'led',
@@ -5054,7 +5054,7 @@ const FEATURED_SERVICES = [{
   label: 'Màn hình LED',
   title: 'Nội dung linh hoạt, đổi theo khung giờ',
   desc: 'LED ngoài trời và LCD/frame tại thang máy, trung tâm thương mại. Đặt theo spot 15 đến 30 giây, đổi nội dung nhanh, báo cáo tần suất phát thực tế.',
-  img: 'https://picsum.photos/seed/tcg-metro-6/800/520',
+  img: '../../assets/ooh/hanoi-cg01-nct.png',
   cta: 'Xem dịch vụ LED'
 }, {
   slug: 'pano',
@@ -5062,7 +5062,7 @@ const FEATURED_SERVICES = [{
   label: 'Pano · Hộp đèn',
   title: 'Phủ dày theo tuyến, chi phí hợp lý',
   desc: 'Quảng cáo tại nhà chờ xe bus, giải phân cách và tuyến phố. Chi phí vào cửa thấp, phù hợp chiến dịch khu vực và mở điểm bán, có combo nhiều mặt giảm chi phí.',
-  img: 'https://picsum.photos/seed/tcg-ooh-11/800/520',
+  img: '../../assets/ooh/quangninh-hl16.jpg',
   cta: 'Xem dịch vụ pano'
 }, {
   slug: null,
@@ -5070,7 +5070,7 @@ const FEATURED_SERVICES = [{
   label: 'Dự án tiêu biểu',
   title: 'Đồng hành cùng 400+ nhãn hàng',
   desc: 'Từ FMCG, ngân hàng đến hàng không và công nghệ. Xem các chiến dịch OOH tiêu biểu Toàn Cầu ADV đã triển khai trên toàn quốc.',
-  img: 'https://picsum.photos/seed/tcg-case-fnb/800/520',
+  img: '../../assets/ooh/haiphong-caurao2.jpg',
   cta: 'Xem dự án tiêu biểu',
   href: 'news.html'
 }];
