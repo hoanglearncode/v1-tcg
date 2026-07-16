@@ -2294,7 +2294,7 @@ function CTABand() {
     variant: "cta",
     size: "lg",
     onClick: () => {
-      window.location.href = 'contact.html';
+      var __c = document.getElementById('lien-he') || document.getElementById('lead'); __c ? __c.scrollIntoView({ behavior: 'smooth' }) : window.location.href = 'index.html#lien-he';
     }
   }, "Y\xEAu c\u1EA7u b\xE1o gi\xE1")), /*#__PURE__*/React.createElement("span", {
     style: {
@@ -3332,7 +3332,7 @@ function App() {
   }, "Kh\xE1m ph\xE1 b\u1EA3n \u0111\u1ED3"), /*#__PURE__*/React.createElement(Button, {
     variant: "outline-inverse",
     onClick: () => {
-      window.location.href = 'contact.html';
+      var __c = document.getElementById('lien-he') || document.getElementById('lead'); __c ? __c.scrollIntoView({ behavior: 'smooth' }) : window.location.href = 'index.html#lien-he';
     }
   }, "Nh\u1EADn t\u01B0 v\u1EA5n"))))), /*#__PURE__*/React.createElement(window.Footer, null));
 }
@@ -3573,7 +3573,7 @@ function App() {
   }, "Xem v\u1ECB tr\xED tr\xEAn b\u1EA3n \u0111\u1ED3"), /*#__PURE__*/React.createElement(Button, {
     variant: "outline",
     onClick: () => {
-      window.location.href = 'contact.html';
+      var __c = document.getElementById('lien-he') || document.getElementById('lead'); __c ? __c.scrollIntoView({ behavior: 'smooth' }) : window.location.href = 'index.html#lien-he';
     }
   }, "Nh\u1EADn t\u01B0 v\u1EA5n & b\xE1o gi\xE1"))), i % 2 === 1 && /*#__PURE__*/React.createElement("img", {
     src: svcImgs[s.slug],
@@ -4120,7 +4120,7 @@ function Navbar({
       fontWeight: 500,
       flex: 1
     }
-  }, [['index.html', 'Trang chủ'], ['about.html', 'Về chúng tôi'], ['map.html', 'Bản đồ'], ['services.html', 'Dịch vụ'], ['news.html', 'Tin tức'], ['contact.html', 'Liên hệ']].map(([h, l]) => /*#__PURE__*/React.createElement("a", {
+  }, [['index.html', 'Trang chủ'], ['about.html', 'Về chúng tôi'], ['map.html', 'Bản đồ'], ['services.html', 'Dịch vụ'], ['news.html', 'Tin tức'], ['index.html#lien-he', 'Liên hệ']].map(([h, l]) => /*#__PURE__*/React.createElement("a", {
     key: h,
     href: h,
     style: {
@@ -4132,7 +4132,7 @@ function Navbar({
     variant: "cta",
     size: "sm",
     onClick: () => {
-      window.location.href = 'contact.html';
+      var __c = document.getElementById('lien-he') || document.getElementById('lead'); __c ? __c.scrollIntoView({ behavior: 'smooth' }) : window.location.href = 'index.html#lien-he';
     }
   }, "Y\xEAu c\u1EA7u b\xE1o gi\xE1")));
 }
@@ -4297,7 +4297,7 @@ function Hero() {
   }), " Kh\xE1m ph\xE1 b\u1EA3n \u0111\u1ED3 v\u1ECB tr\xED"), /*#__PURE__*/React.createElement("button", {
     className: "hero-cta",
     onClick: () => {
-      window.location.href = 'contact.html';
+      var __c = document.getElementById('lien-he') || document.getElementById('lead'); __c ? __c.scrollIntoView({ behavior: 'smooth' }) : window.location.href = 'index.html#lien-he';
     },
     style: {
       display: 'inline-flex',
@@ -4712,7 +4712,7 @@ function Navbar({
       fontWeight: 500,
       flex: 1
     }
-  }, [['index.html', 'Trang chủ'], ['map.html', 'Bản đồ'], ['services.html', 'Dịch vụ'], ['news.html', 'Tin tức'], ['contact.html', 'Liên hệ']].map(([h, l]) => /*#__PURE__*/React.createElement("a", {
+  }, [['index.html', 'Trang chủ'], ['map.html', 'Bản đồ'], ['services.html', 'Dịch vụ'], ['news.html', 'Tin tức'], ['index.html#lien-he', 'Liên hệ']].map(([h, l]) => /*#__PURE__*/React.createElement("a", {
     key: h,
     href: h,
     style: {
@@ -4724,7 +4724,7 @@ function Navbar({
     variant: "cta",
     size: "sm",
     onClick: () => {
-      window.location.href = 'contact.html';
+      var __c = document.getElementById('lien-he') || document.getElementById('lead'); __c ? __c.scrollIntoView({ behavior: 'smooth' }) : window.location.href = 'index.html#lien-he';
     }
   }, "Y\xEAu c\u1EA7u b\xE1o gi\xE1")));
 }
@@ -4889,7 +4889,7 @@ function Hero() {
   }), " Kh\xE1m ph\xE1 b\u1EA3n \u0111\u1ED3 v\u1ECB tr\xED"), /*#__PURE__*/React.createElement("button", {
     className: "hero-cta",
     onClick: () => {
-      window.location.href = 'contact.html';
+      var __c = document.getElementById('lien-he') || document.getElementById('lead'); __c ? __c.scrollIntoView({ behavior: 'smooth' }) : window.location.href = 'index.html#lien-he';
     },
     style: {
       display: 'inline-flex',
@@ -6426,7 +6426,7 @@ function CTABand() {
     variant: "cta",
     size: "lg",
     onClick: () => {
-      window.location.href = 'contact.html';
+      var __c = document.getElementById('lien-he') || document.getElementById('lead'); __c ? __c.scrollIntoView({ behavior: 'smooth' }) : window.location.href = 'index.html#lien-he';
     }
   }, "Y\xEAu c\u1EA7u b\xE1o gi\xE1")), /*#__PURE__*/React.createElement("span", {
     style: {
@@ -7909,7 +7909,7 @@ function CTABand() {
     variant: "cta",
     size: "lg",
     onClick: () => {
-      window.location.href = 'contact.html';
+      var __c = document.getElementById('lien-he') || document.getElementById('lead'); __c ? __c.scrollIntoView({ behavior: 'smooth' }) : window.location.href = 'index.html#lien-he';
     }
   }, "Y\xEAu c\u1EA7u b\xE1o gi\xE1")), /*#__PURE__*/React.createElement("span", {
     style: {

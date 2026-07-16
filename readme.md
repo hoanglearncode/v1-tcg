@@ -70,7 +70,7 @@ User-specified palette update: brand blue `#368FFF`; yêu cầu bỏ hoàn toàn
   - `feedback/` Toast, Skeleton, EmptyState, ErrorState
   - `sections/` TrustStats
   - `map/` MapMarker, MapPopup
-- `ui_kits/website/` — multi-page website (chung Navbar + Footer): `index.html` trang chủ · `map.html` bản đồ · `services.html` dịch vụ · `news.html` tin tức · `contact.html` liên hệ
+- `ui_kits/website/` — multi-page website (chung Navbar + Footer): `index.html` trang chủ (kèm section liên hệ `#lien-he`) · `map.html` bản đồ · `services.html` dịch vụ · `news.html` tin tức
 - `SKILL.md` — agent-skill entry point
 
 ## Intentional additions

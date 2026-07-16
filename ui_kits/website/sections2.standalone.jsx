@@ -288,7 +288,7 @@ function CTABand(){
       <h2 style={{margin:0,color:'#fff',fontFamily:'var(--font-display)',fontSize:'var(--text-h2)',fontWeight:600,textWrap:'balance'}}>Sẵn sàng tìm vị trí OOH cho chiến dịch tiếp theo?</h2>
       <div style={{display:'flex',gap:12,flexWrap:'wrap',justifyContent:'center'}}>
         <Button variant="outline-inverse" size="lg" onClick={()=>{window.location.href='map.html'}}>Khám phá bản đồ vị trí</Button>
-        <Button variant="cta" size="lg" onClick={()=>{window.location.href='contact.html'}}>Yêu cầu báo giá</Button>
+        <Button variant="cta" size="lg" onClick={()=>window.goContact()}>Yêu cầu báo giá</Button>
       </div>
       <span style={{fontSize:'.8125rem',color:'var(--slate-400)'}}>Bạn là chủ biển muốn cho thuê? Sàn OOH sắp ra mắt.</span>
     </div></section>;

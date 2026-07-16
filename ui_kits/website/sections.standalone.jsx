@@ -17,10 +17,10 @@ function Navbar({onQuote}){
           <span style={{fontSize:'.6875rem',color:'var(--muted-foreground)',letterSpacing:'.05em'}}></span>
         </span></a>
       <nav style={{display:'flex',gap:22,fontSize:'.9375rem',fontWeight:500,flex:1}}>
-        {[['index.html','Trang chủ'],['map.html','Bản đồ'],['services.html','Dịch vụ'],['news.html','Tin tức'],['contact.html','Liên hệ']].map(([h,l])=>
+        {[['index.html','Trang chủ'],['map.html','Bản đồ'],['services.html','Dịch vụ'],['news.html','Tin tức'],['index.html#lien-he','Liên hệ']].map(([h,l])=>
           <a key={h} href={h} style={{color:window.location.pathname.endsWith('/'+h)||(h==='index.html'&&/\/(index\.html)?$/.test(window.location.pathname))?'var(--primary)':'var(--slate-600)',fontWeight:window.location.pathname.endsWith('/'+h)?600:500,textDecoration:'none'}}>{l}</a>)}
       </nav>
-      <Button variant="cta" size="sm" onClick={()=>{window.location.href='contact.html'}}>Yêu cầu báo giá</Button>
+      <Button variant="cta" size="sm" onClick={()=>goContact()}>Yêu cầu báo giá</Button>
     </div></header>;
 }
 const HERO_SLIDES=[
@@ -53,7 +53,7 @@ function Hero(){
         <p style={{margin:0,fontSize:'var(--text-body-lg)',lineHeight:1.6,color:'var(--slate-200)',maxWidth:520}}>{s.body}</p>
         <div style={{display:'flex',gap:12,flexWrap:'wrap',marginTop:6}}>
           <button className="hero-cta" onClick={()=>{window.location.href='map.html'}} style={{display:'inline-flex',alignItems:'center',gap:8,height:52,padding:'0 24px',border:'none',borderRadius:'var(--radius-md)',background:'var(--cta)',color:'var(--cta-foreground)',fontWeight:600,fontSize:'1.0625rem',fontFamily:'var(--font-sans)',cursor:'pointer',boxShadow:'var(--shadow-md)'}}><window.Icon name="map" size={19}/> Khám phá bản đồ vị trí</button>
-          <button className="hero-cta" onClick={()=>{window.location.href='contact.html'}} style={{display:'inline-flex',alignItems:'center',gap:8,height:52,padding:'0 24px',border:'1.5px solid rgba(255,255,255,.5)',borderRadius:'var(--radius-md)',background:'transparent',color:'#fff',fontWeight:600,fontSize:'1.0625rem',fontFamily:'var(--font-sans)',cursor:'pointer'}}><window.Icon name="phone-call" size={19}/> Nhận tư vấn</button>
+          <button className="hero-cta" onClick={()=>goContact()} style={{display:'inline-flex',alignItems:'center',gap:8,height:52,padding:'0 24px',border:'1.5px solid rgba(255,255,255,.5)',borderRadius:'var(--radius-md)',background:'transparent',color:'#fff',fontWeight:600,fontSize:'1.0625rem',fontFamily:'var(--font-sans)',cursor:'pointer'}}><window.Icon name="phone-call" size={19}/> Nhận tư vấn</button>
         </div>
         <div style={{display:'flex',gap:8,marginTop:14}}>
           {HERO_SLIDES.map((_,idx)=><button key={idx} aria-label={'Slide '+(idx+1)} onClick={()=>setI(idx)} className="hero-dot" style={{width:idx===i?26:8,height:8,borderRadius:4,border:'none',cursor:'pointer',background:idx===i?'#fff':'rgba(255,255,255,.4)'}}></button>)}
@@ -62,6 +62,7 @@ function Hero(){
     </div></section>;
 }
 function go(h){const el=document.querySelector(h);if(el){const y=el.getBoundingClientRect().top+window.scrollY-80;window.scrollTo({top:y,behavior:'smooth'})}}
+function goContact(){if(document.getElementById('lien-he'))go('#lien-he');else window.location.href='index.html#lien-he'}
 function Stats(){
   // Logo đối tác/thương hiệu (demo) – lấy từ logo.dev theo domain. Thay bằng logo thật khi có.
   const LOGO_TOKEN='pk_X-1ZO13GSgeOoUrIuJ6GMQ';
@@ -129,4 +130,4 @@ function Spotlight(){
         </div>
       </div></div></section>;
 }
-Object.assign(window,{Icon,Navbar,Hero,Stats,SectionHead,Spotlight,go,container});
+Object.assign(window,{Icon,Navbar,Hero,Stats,SectionHead,Spotlight,go,goContact,container});
