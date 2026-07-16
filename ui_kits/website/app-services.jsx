@@ -13,6 +13,32 @@ const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,
 const matches=(s,q)=>{const k=norm(q.trim());return !k||[s.name,s.desc,s.group,s.count,s.feats.join(' '),s.cities.join(' '),(s.best||[]).join(' ')].some(f=>norm(f).includes(k))};
 const SORTS=[['noi-bat','Nổi bật'],['gia-asc','Giá từ thấp đến cao'],['gia-desc','Giá từ cao đến thấp']];
 const tabStyle=active=>({border:'none',background:'none',padding:'0 0 12px',fontFamily:'var(--font-sans)',fontSize:'.78125rem',fontWeight:700,letterSpacing:'.07em',textTransform:'uppercase',color:active?'#fff':'var(--blue-200)',borderBottom:active?'2px solid var(--blue-300)':'2px solid transparent',cursor:'pointer',transition:'color .15s ease',whiteSpace:'nowrap'});
+function RailLabel({children}){
+  return <div style={{display:'grid',gap:6}}>
+    <strong style={{fontSize:'.71875rem',fontWeight:700,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--foreground)'}}>{children}</strong>
+    <div style={{height:2,background:'var(--foreground)'}}></div>
+  </div>;
+}
+function Sidebar({D}){
+  return <aside className="svc-side" style={{display:'grid',gap:34,alignContent:'start',position:'sticky',top:24}}>
+    <section style={{display:'grid',gap:0}}>
+      <RailLabel>Quy trình triển khai</RailLabel>
+      {D.steps.map(([ic,label],i)=><div key={label} style={{display:'flex',gap:13,alignItems:'center',padding:'13px 0',borderBottom:i<D.steps.length-1?HAIR:'none'}}>
+        <span style={{width:38,height:38,borderRadius:'50%',background:'var(--blue-50)',color:'var(--blue-700)',display:'grid',placeItems:'center',flexShrink:0}}><window.Icon name={ic} size={17}/></span>
+        <div style={{display:'grid',gap:2}}>
+          <span style={{fontFamily:'var(--font-mono)',fontSize:'.65625rem',letterSpacing:'.08em',textTransform:'uppercase',color:'var(--slate-400)'}}>Bước {i+1}</span>
+          <span style={{fontSize:'.84375rem',fontWeight:600,lineHeight:1.4}}>{label}</span>
+        </div>
+      </div>)}
+    </section>
+    <div style={{background:'var(--blue-900)',color:'#fff',borderRadius:'var(--radius-sm)',padding:'22px 20px',display:'grid',gap:10}}>
+      <strong style={{fontFamily:'var(--font-display)',fontSize:'1.1875rem',fontWeight:700,lineHeight:1.3}}>Sẵn sàng lên kế hoạch OOH?</strong>
+      <p style={{margin:0,fontSize:'.84375rem',color:'var(--blue-100)',lineHeight:1.55}}>Khám phá bản đồ ~730 vị trí, xem điểm AI theo ngành hàng và nhận báo giá PDF trong vài phút.</p>
+      <Button variant="cta" onClick={()=>{window.location.href='map.html'}}>Khám phá bản đồ</Button>
+      <button onClick={()=>window.goContact()} style={{height:42,border:'1px solid rgba(255,255,255,.4)',borderRadius:'var(--radius-sm)',background:'transparent',color:'#fff',fontFamily:'var(--font-sans)',fontSize:'.875rem',fontWeight:600,cursor:'pointer'}}>Nhận tư vấn & báo giá</button>
+    </div>
+  </aside>;
+}
 function MoreMenu({tags,counts,tag,onTag}){
   const [open,setOpen]=React.useState(false);
   const ref=React.useRef(null);
@@ -152,50 +178,48 @@ function App(){
       .v-search input::placeholder{color:var(--blue-200)}
       .clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
       .svc-card:hover{border-color:var(--blue-400)!important}
-      .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
-      .steps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-      @media(max-width:1080px){.svc-grid{grid-template-columns:repeat(2,1fr)}.steps-grid{grid-template-columns:repeat(3,1fr)}}
+      .svc-layout{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,3fr);gap:0 44px;align-items:start}
+      .svc-side{border-left:1px solid var(--border);padding-left:44px}
+      .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;align-items:start}
+      @media(max-width:960px){
+        .svc-layout{grid-template-columns:1fr}
+        .svc-side{position:static!important;border-left:none;padding-left:0;margin-top:44px}
+      }
       @media(max-width:720px){
         .v-toolbar{flex-wrap:wrap;align-items:stretch}
         .v-toolbar .v-search{order:-1;width:100%;min-width:0}
         .svc-grid{grid-template-columns:1fr}
-        .steps-grid{grid-template-columns:repeat(2,1fr)}
       }
     `}</style>
     <window.Navbar/>
     <Hero D={D} tag={tag} onTag={setTag} query={query} setQuery={setQuery}/>
-    <section style={{...window.container,padding:'36px 32px 72px'}}>
-      <div style={{display:'flex',alignItems:'center',gap:16,flexWrap:'wrap',marginBottom:8}}>
-        <strong style={{fontSize:'.71875rem',fontWeight:700,letterSpacing:'.12em',textTransform:'uppercase'}}>{label}</strong>
-        <span style={{fontFamily:'var(--font-mono)',fontSize:'.71875rem',color:'var(--slate-400)'}}>{items.length} dịch vụ</span>
-        <label style={{marginLeft:'auto',display:'flex',alignItems:'center',gap:8,fontSize:'.78125rem',color:'var(--slate-500)'}}>
-          Sắp xếp
-          <select value={sort} onChange={e=>setSort(e.target.value)} style={{height:34,border:HAIR,borderRadius:'var(--radius-sm)',background:'#fff',padding:'0 8px',fontFamily:'var(--font-sans)',fontSize:'.8125rem',fontWeight:600,color:'var(--foreground)',cursor:'pointer'}}>
-            {SORTS.map(([v,l])=><option key={v} value={v}>{l}</option>)}
-          </select>
-        </label>
-      </div>
-      <div style={{height:2,background:'var(--foreground)',marginBottom:26}}></div>
-      {items.length===0
-        ?<div style={{display:'grid',justifyItems:'start',gap:14,padding:'10px 0 26px'}}>
-          <p style={{margin:0,color:'var(--muted-foreground)'}}>Không tìm thấy dịch vụ phù hợp{searching&&<> với từ khóa “{query.trim()}”</>}. Bạn có thể liên hệ để được tư vấn giải pháp riêng.</p>
-          <div style={{display:'flex',gap:10}}>
-            <Button variant="outline" onClick={onClear}>Xóa bộ lọc</Button>
-            <Button variant="primary" onClick={()=>window.goContact()}>Nhận tư vấn</Button>
+    <div style={{...window.container,padding:'36px 32px 72px'}}>
+      <div className="svc-layout">
+        <main style={{display:'grid',alignContent:'start'}}>
+          <div style={{display:'flex',alignItems:'center',gap:16,flexWrap:'wrap',marginBottom:8}}>
+            <strong style={{fontSize:'.71875rem',fontWeight:700,letterSpacing:'.12em',textTransform:'uppercase'}}>{label}</strong>
+            <span style={{fontFamily:'var(--font-mono)',fontSize:'.71875rem',color:'var(--slate-400)'}}>{items.length} dịch vụ</span>
+            <label style={{marginLeft:'auto',display:'flex',alignItems:'center',gap:8,fontSize:'.78125rem',color:'var(--slate-500)'}}>
+              Sắp xếp
+              <select value={sort} onChange={e=>setSort(e.target.value)} style={{height:34,border:HAIR,borderRadius:'var(--radius-sm)',background:'#fff',padding:'0 8px',fontFamily:'var(--font-sans)',fontSize:'.8125rem',fontWeight:600,color:'var(--foreground)',cursor:'pointer'}}>
+                {SORTS.map(([v,l])=><option key={v} value={v}>{l}</option>)}
+              </select>
+            </label>
           </div>
-        </div>
-        :<div className="svc-grid">{items.map(s=><ServiceCard key={s.slug} s={s}/>)}</div>}
-    </section>
-    <section style={{background:'var(--muted)',padding:'56px 0'}}><div style={{...window.container,display:'grid',gap:24}}>
-      <h2 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'var(--text-h2)',fontWeight:600,color:'var(--primary)',textAlign:'center'}}>Quy trình triển khai</h2>
-      <div className="steps-grid">
-        {D.steps.map(([ic,label2],i)=><div key={i} style={{display:'grid',gap:10,justifyItems:'center',textAlign:'center',background:'#fff',border:'1px solid var(--border)',borderRadius:'var(--radius-lg)',padding:'18px 12px'}}>
-          <span style={{width:44,height:44,borderRadius:'50%',background:'var(--primary)',color:'#fff',display:'grid',placeItems:'center'}}><window.Icon name={ic} size={20}/></span>
-          <span style={{fontSize:'.875rem',fontWeight:600,lineHeight:1.4}}>{label2}</span>
-        </div>)}
+          <div style={{height:2,background:'var(--foreground)',marginBottom:26}}></div>
+          {items.length===0
+            ?<div style={{display:'grid',justifyItems:'start',gap:14,padding:'10px 0 26px'}}>
+              <p style={{margin:0,color:'var(--muted-foreground)'}}>Không tìm thấy dịch vụ phù hợp{searching&&<> với từ khóa “{query.trim()}”</>}. Bạn có thể liên hệ để được tư vấn giải pháp riêng.</p>
+              <div style={{display:'flex',gap:10}}>
+                <Button variant="outline" onClick={onClear}>Xóa bộ lọc</Button>
+                <Button variant="primary" onClick={()=>window.goContact()}>Nhận tư vấn</Button>
+              </div>
+            </div>
+            :<div className="svc-grid">{items.map(s=><ServiceCard key={s.slug} s={s}/>)}</div>}
+        </main>
+        <Sidebar D={D}/>
       </div>
-    </div></section>
-    <window.CTABand/>
+    </div>
     <window.Footer/>
   </div>;
 }
