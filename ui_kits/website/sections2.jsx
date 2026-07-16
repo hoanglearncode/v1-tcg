@@ -12,7 +12,7 @@ function MapPreview(){
   return <section id="map" style={{background:'#fff',padding:'96px 0',overflow:'hidden'}}>
     <style>{'.map-cta{transition:transform .2s var(--ease-standard),box-shadow .2s var(--ease-standard)}.map-cta:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}.map-pulse{animation:mappulse 2s ease-in-out infinite}@keyframes mappulse{0%,100%{box-shadow:0 0 0 0 rgba(35,116,217,.45)}50%{box-shadow:0 0 0 8px rgba(35,116,217,0)}}@media (prefers-reduced-motion: reduce){.map-pulse{animation:none}}'}</style>
     <div style={{...window.container,display:'grid',gridTemplateColumns:'.95fr 1.05fr',gap:56,alignItems:'center'}}>
-      <div style={{display:'grid',gap:18,justifyItems:'start'}}>
+      <div className="reveal" style={{display:'grid',gap:18,justifyItems:'start'}}>
         <span style={{display:'inline-flex',alignItems:'center',gap:8,padding:'6px 14px',borderRadius:'var(--radius-full)',background:'var(--blue-50)',color:'var(--blue-700)',fontSize:'.75rem',fontWeight:700,letterSpacing:'.06em',textTransform:'uppercase'}}><window.Icon name="map" size={15}/>Bản đồ trực tuyến</span>
         <h2 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'var(--text-h2)',fontWeight:600,color:'var(--primary)',lineHeight:1.2}}>Bản đồ vị trí OOH toàn quốc</h2>
         <p style={{margin:0,fontSize:'var(--text-body-lg)',color:'var(--slate-600)',lineHeight:1.6,maxWidth:460}}>Lọc theo tỉnh/thành, loại biển, ngân sách. Xem điểm AI và chọn vị trí để nhận báo giá trong vài phút.</p>
@@ -21,9 +21,9 @@ function MapPreview(){
         </div>
         <button className="map-cta" onClick={()=>{window.location.href='map.html'}} style={{display:'inline-flex',alignItems:'center',gap:8,height:52,padding:'0 24px',border:'none',borderRadius:'var(--radius-md)',background:'var(--cta)',color:'var(--cta-foreground)',fontWeight:600,fontSize:'1rem',fontFamily:'var(--font-sans)',cursor:'pointer',boxShadow:'var(--shadow-md)'}}>Khám phá bản đồ vị trí <window.Icon name="arrow-right" size={18}/></button>
       </div>
-      <div style={{position:'relative'}}>
+      <div className="reveal-scale" style={{position:'relative'}}>
         <div style={{position:'absolute',width:'70%',height:'70%',left:'15%',top:'15%',background:'var(--blue-200)',filter:'blur(70px)',opacity:.5,zIndex:0}}></div>
-        <div style={{position:'relative',zIndex:1,borderRadius:'var(--radius-xl)',overflow:'hidden',border:'1px solid var(--border)',background:'linear-gradient(160deg,#fff,var(--blue-50))',boxShadow:'var(--shadow-lg)'}}>
+        <div className="tcg-card tcg-media" style={{position:'relative',zIndex:1,background:'linear-gradient(160deg,#fff,var(--blue-50))'}}>
           <img src="../../assets/world-map-dotted.png" alt="Bản đồ mạng lưới vị trí OOH Toàn Cầu" style={{width:'100%',display:'block',mixBlendMode:'multiply'}}/>
         </div>
         <div className="map-pulse" style={{position:'absolute',left:24,top:24,zIndex:2,display:'flex',alignItems:'center',gap:8,padding:'8px 14px',borderRadius:'var(--radius-full)',background:'#fff',border:'1px solid var(--border)',boxShadow:'var(--shadow-md)'}}>
@@ -188,12 +188,12 @@ const JOURNEY=[
 function Journey(){
   return <section style={{padding:'88px 0',background:'#fff'}}>
     <div style={window.container}>
-      <h2 style={{margin:'0 0 56px',textAlign:'center',fontFamily:'var(--font-display)',fontSize:'clamp(1.75rem,3vw,2.5rem)',fontWeight:700,letterSpacing:'.02em',color:'var(--primary)'}}>HÀNH TRÌNH 20 NĂM</h2>
+      <h2 className="reveal" style={{margin:'0 0 56px',textAlign:'center',fontFamily:'var(--font-display)',fontSize:'clamp(1.75rem,3vw,2.5rem)',fontWeight:700,letterSpacing:'.01em',color:'var(--primary)'}}>Hành trình 20 năm</h2>
       <div style={{position:'relative',display:'grid',gridTemplateColumns:`repeat(${JOURNEY.length},1fr)`,gap:16}}>
-        <div style={{position:'absolute',left:'10%',right:'10%',top:74,height:2,background:'var(--border)',zIndex:0}}></div>
-        {JOURNEY.map((j,i)=><div key={j.year} style={{position:'relative',zIndex:1,display:'grid',gap:14,justifyItems:'center',textAlign:'center'}}>
+        <div className="tcg-timeline-line" style={{position:'absolute',left:'10%',right:'10%',top:74,height:3,borderRadius:2,background:'linear-gradient(90deg,var(--blue-300),var(--blue-600))',zIndex:0}}></div>
+        {JOURNEY.map((j,i)=><div key={j.year} className="reveal" style={{'--reveal-delay':(i*0.12)+'s',position:'relative',zIndex:1,display:'grid',gap:14,justifyItems:'center',textAlign:'center'}}>
           <span style={{fontFamily:'var(--font-mono)',fontWeight:700,fontSize:'.9375rem',color:'var(--foreground)'}}>{j.year}</span>
-          <span style={{width:56,height:56,borderRadius:'50%',background:'var(--blue-100)',color:'var(--primary)',display:'grid',placeItems:'center',border:'3px solid #fff',boxShadow:'0 0 0 2px var(--border)'}}><window.Icon name={j.icon} size={24}/></span>
+          <span className="tcg-jicon" style={{width:56,height:56,borderRadius:'50%',background:'var(--blue-100)',color:'var(--primary)',display:'grid',placeItems:'center',border:'3px solid #fff',boxShadow:'0 0 0 2px var(--border)',transition:'transform .4s var(--ease-spring),background .3s,color .3s,box-shadow .3s'}}><window.Icon name={j.icon} size={24}/></span>
           <span style={{width:10,height:10,borderRadius:'50%',background:'var(--primary)',marginTop:-4}}></span>
           <div style={{display:'grid',gap:6,marginTop:4}}>
             <strong style={{fontSize:'.9375rem',fontWeight:700,lineHeight:1.35}}>{i+1}. {j.title}</strong>
@@ -209,11 +209,11 @@ function Services(){
     <div style={window.container}>
       <window.SectionHead title="Giải pháp OOH của Toàn Cầu"/>
       <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:16}}>
-        {D2.services.map(s=><div key={s.name} className="svc" style={{display:'grid',gap:10,alignContent:'start',background:'#fff',border:'1px solid var(--border)',borderRadius:'var(--radius-lg)',padding:'22px 20px',boxShadow:'var(--shadow-sm)'}}>
-          <span style={{width:44,height:44,borderRadius:'var(--radius-md)',background:'var(--navy-50)',display:'grid',placeItems:'center',color:'var(--primary)'}}><window.Icon name={s.icon} size={22}/></span>
-          <strong style={{fontSize:'var(--text-h4)',fontWeight:600}}>{s.name}</strong>
-          <p style={{margin:0,fontSize:'.875rem',color:'var(--muted-foreground)',lineHeight:1.55}}>{s.desc}</p>
-          <a style={{fontSize:'.875rem',fontWeight:600,color:'var(--primary)',cursor:'pointer'}}>Tìm hiểu →</a>
+        {D2.services.map((s,i)=><div key={s.name} className="tcg-card reveal" style={{'--reveal-delay':(i*0.07)+'s',display:'grid',gap:12,alignContent:'start',padding:'24px 22px'}}>
+          <span className="tcg-icon" style={{width:46,height:46,borderRadius:'var(--radius-md)',background:'var(--navy-50)',display:'grid',placeItems:'center',color:'var(--primary)'}}><window.Icon name={s.icon} size={22}/></span>
+          <strong style={{fontSize:'var(--text-h4)',fontWeight:600,fontFamily:'var(--font-display)'}}>{s.name}</strong>
+          <p style={{margin:0,fontSize:'.875rem',color:'var(--muted-foreground)',lineHeight:1.6}}>{s.desc}</p>
+          <a className="tcg-arrow" style={{fontSize:'.875rem',fontWeight:600,color:'var(--primary)',cursor:'pointer'}}>Tìm hiểu <window.Icon name="arrow-right" size={16}/></a>
         </div>)}
       </div></div></section>;
 }
@@ -221,19 +221,20 @@ function Cases(){
   const D=window.TCG_DATA;
   return <section id="cases" style={{padding:'88px 0'}}>
     <div style={window.container}>
-      <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:28}}>
+      <div className="reveal" style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:28,flexWrap:'wrap',gap:16}}>
         <h2 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'var(--text-h2)',fontWeight:600,color:'var(--primary)'}}>Dự án & chiến dịch tiêu biểu</h2>
         <Button variant="primary" onClick={()=>{window.location.href='news.html'}}>Xem tất cả →</Button>
       </div>
       <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:16}}>
-        {D.news.slice(0,4).map(n=><article key={n.title} style={{display:'grid',gap:0,background:'#fff',border:'1px solid var(--border)',borderRadius:'var(--radius-lg)',overflow:'hidden',boxShadow:'var(--shadow-sm)',position:'relative'}}>
-          <img src={n.img} alt="" style={{width:'100%',aspectRatio:'16/10',objectFit:'cover'}}/>
-          <div style={{padding:'14px 16px 18px',display:'grid',gap:8,alignContent:'start'}}>
-            <div style={{display:'flex',gap:8,alignItems:'center'}}>
-              <span style={{fontFamily:'var(--font-mono)',fontSize:'.75rem',color:'var(--muted-foreground)'}}>{n.date}</span>
-              <span style={{fontSize:'.75rem',fontWeight:600,color:'var(--primary)'}}>{n.tag}</span>
-            </div>
-            <h3 style={{margin:0,fontSize:'.9375rem',fontWeight:600,lineHeight:1.4}}>{n.title}</h3>
+        {D.news.slice(0,4).map((n,i)=><article key={n.title} className="tcg-card reveal" onClick={()=>{window.location.href='news.html'}} style={{'--reveal-delay':(i*0.08)+'s',display:'grid',gridTemplateRows:'auto 1fr',gap:0,cursor:'pointer'}}>
+          <div className="tcg-media" style={{aspectRatio:'16/10'}}>
+            <img src={n.img} alt=""/>
+            <span style={{position:'absolute',left:12,top:12,zIndex:1,fontSize:'.6875rem',fontWeight:700,letterSpacing:'.04em',textTransform:'uppercase',color:'#fff',background:'rgba(35,116,217,.92)',padding:'4px 10px',borderRadius:'var(--radius-full)',boxShadow:'var(--shadow-sm)'}}>{n.tag}</span>
+          </div>
+          <div style={{padding:'16px 18px 20px',display:'grid',gap:10,alignContent:'start'}}>
+            <span style={{fontFamily:'var(--font-mono)',fontSize:'.75rem',color:'var(--muted-foreground)'}}>{n.date}</span>
+            <h3 style={{margin:0,fontSize:'1rem',fontWeight:600,lineHeight:1.45,fontFamily:'var(--font-display)'}}>{n.title}</h3>
+            <span className="tcg-arrow" style={{marginTop:4,fontSize:'.8125rem',fontWeight:600,color:'var(--primary)'}}>Đọc tiếp <window.Icon name="arrow-right" size={15}/></span>
           </div>
         </article>)}
       </div></div></section>;
@@ -245,7 +246,7 @@ function LeadForm({onToast}){
   return <section id="lead" data-anchor="lien-he" style={{background:'var(--navy-50)',padding:'88px 0'}}>
     <span id="lien-he" style={{position:'relative',top:-90,display:'block'}}></span>
     <div style={{...window.container,display:'grid',gridTemplateColumns:'.9fr 1.1fr',gap:48,alignItems:'start'}}>
-      <div style={{display:'grid',gap:16}}>
+      <div className="reveal" style={{display:'grid',gap:16}}>
         <h2 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'var(--text-h2)',fontWeight:600,color:'var(--primary)',lineHeight:1.18}}>Nhận tư vấn OOH miễn phí</h2>
         <p style={{margin:0,fontSize:'var(--text-body-lg)',color:'var(--slate-600)'}}>Để lại thông tin, đội ngũ Toàn Cầu liên hệ trong 24h.</p>
         <ul style={{margin:0,padding:0,listStyle:'none',display:'grid',gap:10}}>
@@ -269,7 +270,7 @@ function LeadForm({onToast}){
           <p style={{margin:0,color:'var(--muted-foreground)'}}>Chúng tôi sẽ liên hệ trong 24h làm việc. Mã yêu cầu: <span style={{fontFamily:'var(--font-mono)',fontWeight:600}}>TC-2607-018</span></p>
           <Button variant="outline" onClick={()=>setSt('idle')}>Gửi yêu cầu khác</Button>
         </div>
-      : <div style={{background:'#fff',border:'1px solid var(--border)',borderRadius:'var(--radius-xl)',padding:28,display:'grid',gridTemplateColumns:'1fr 1fr',gap:14,boxShadow:'var(--shadow-md)'}}>
+      : <div className="reveal-scale" style={{background:'#fff',border:'1px solid var(--border)',borderRadius:'var(--radius-xl)',padding:28,display:'grid',gridTemplateColumns:'1fr 1fr',gap:14,boxShadow:'var(--shadow-card)'}}>
         <Field label="Họ tên" required><Input placeholder="Nguyễn Văn A"/></Field>
         <Field label="Số điện thoại" required><Input placeholder="09xx xxx xxx"/></Field>
         <Field label="Doanh nghiệp"><Input placeholder="Tên công ty"/></Field>
@@ -284,7 +285,7 @@ function LeadForm({onToast}){
 }
 function CTABand(){
   return <section style={{background:'var(--navy-800)',padding:'64px 0'}}>
-    <div style={{...window.container,display:'grid',gap:20,justifyItems:'center',textAlign:'center'}}>
+    <div className="reveal" style={{...window.container,display:'grid',gap:20,justifyItems:'center',textAlign:'center'}}>
       <h2 style={{margin:0,color:'#fff',fontFamily:'var(--font-display)',fontSize:'var(--text-h2)',fontWeight:600,textWrap:'balance'}}>Sẵn sàng tìm vị trí OOH cho chiến dịch tiếp theo?</h2>
       <div style={{display:'flex',gap:12,flexWrap:'wrap',justifyContent:'center'}}>
         <Button variant="outline-inverse" size="lg" onClick={()=>{window.location.href='map.html'}}>Khám phá bản đồ vị trí</Button>

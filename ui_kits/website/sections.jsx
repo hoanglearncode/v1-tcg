@@ -39,7 +39,7 @@ function Hero(){
   return <section id="top" style={{position:'relative',color:'#fff',overflow:'hidden',minHeight:560,background:'var(--blue-900)'}}>
     <style>{'.hero-cta{transition:transform .2s var(--ease-standard),box-shadow .2s var(--ease-standard)}.hero-cta:hover{transform:translateY(-2px)}.hero-cta:active{transform:translateY(0) scale(.98)}.hero-dot{transition:all .3s var(--ease-standard)}'}</style>
     <div style={{position:'absolute',right:0,top:0,width:'66%',height:'100%'}}>
-      {HERO_SLIDES.map((sl,idx)=><img key={idx} src={sl.img} alt={sl.title} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',opacity:idx===i?1:0,transition:'opacity 1.1s ease'}}/>)}
+      {HERO_SLIDES.map((sl,idx)=><img key={idx} src={sl.img} alt={sl.title} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',opacity:idx===i?1:0,transform:idx===i?'scale(1.09)':'scale(1)',transition:'opacity 1.1s ease,transform 6.8s ease-out'}}/>)}
     </div>
     <svg width="380" height="380" viewBox="0 0 380 380" style={{position:'absolute',top:-50,left:'30%',pointerEvents:'none',zIndex:1}}>
       <path d="M40 380 C 40 200, 200 40, 380 40" fill="none" stroke="var(--blue-500)" strokeWidth="24" strokeLinecap="round"/>
@@ -47,7 +47,7 @@ function Hero(){
     </svg>
     <div style={{position:'absolute',inset:0,background:'linear-gradient(100deg,var(--blue-900) 0%,var(--blue-900) 38%,rgba(13,47,94,.75) 52%,rgba(13,47,94,0) 70%)'}}></div>
     <div style={{position:'relative',zIndex:2,...container,padding:'96px 32px'}}>
-      <div style={{display:'grid',gap:20,justifyItems:'start',maxWidth:560}}>
+      <div className="tcg-fadeup" style={{display:'grid',gap:20,justifyItems:'start',maxWidth:560}}>
         <span style={{fontSize:'.8125rem',fontWeight:700,letterSpacing:'.1em',textTransform:'uppercase',color:'var(--blue-200)'}}>{s.eyebrow}</span>
         <h1 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'clamp(2.25rem,3.4vw,3.25rem)',fontWeight:600,lineHeight:1.16,textWrap:'balance'}}>{s.title}</h1>
         <p style={{margin:0,fontSize:'var(--text-body-lg)',lineHeight:1.6,color:'var(--slate-200)',maxWidth:520}}>{s.body}</p>
@@ -80,7 +80,7 @@ function Stats(){
     {name:'BIDV',domain:'bidv.com.vn'},
     {name:'Masan',domain:'masangroup.com'}
   ];
-  const Row=({items,dur,delay})=><div style={{overflow:'hidden',width:'100%'}}>
+  const Row=({items,dur,delay})=><div className="tcg-marquee-row" style={{overflow:'hidden',width:'100%'}}>
     <div style={{display:'flex',gap:16,width:'max-content',animation:`tcgmarquee ${dur}s linear ${delay}s infinite`}}>
       {[...items,...items].map((p,i)=><div key={i} title={p.name} style={{width:140,height:52,flex:'none',borderRadius:'var(--radius-md)',background:'#fff',border:'1px solid var(--slate-200)',display:'grid',placeItems:'center',padding:'0 16px',boxShadow:'var(--shadow-sm)'}}>
         <img src={logo(p.domain)} alt={p.name} loading="lazy" style={{maxWidth:'100%',maxHeight:28,objectFit:'contain',filter:'grayscale(1)',opacity:.7,transition:'filter .2s,opacity .2s'}} onMouseOver={e=>{e.currentTarget.style.filter='none';e.currentTarget.style.opacity=1;}} onMouseOut={e=>{e.currentTarget.style.filter='grayscale(1)';e.currentTarget.style.opacity=.7;}} onError={e=>{e.currentTarget.style.display='none';e.currentTarget.parentNode.textContent=p.name;e.currentTarget.parentNode.style.fontSize='.75rem';e.currentTarget.parentNode.style.color='var(--slate-500)';e.currentTarget.parentNode.style.fontWeight='600';}}/>
@@ -94,7 +94,7 @@ function Stats(){
     </div></section>;
 }
 function SectionHead({kicker,title,sub}){
-  return <div style={{display:'grid',gap:10,justifyItems:'center',textAlign:'center',marginBottom:40}}>
+  return <div className="reveal" style={{display:'grid',gap:10,justifyItems:'center',textAlign:'center',marginBottom:40}}>
     {kicker&&<span style={{fontSize:'.75rem',fontWeight:600,letterSpacing:'.12em',textTransform:'uppercase',color:'var(--brick-500)'}}>{kicker}</span>}
     <h2 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'var(--text-h2)',fontWeight:600,lineHeight:1.18,color:'var(--primary)',textWrap:'balance'}}>{title}</h2>
     {sub&&<p style={{margin:0,color:'var(--muted-foreground)',fontSize:'var(--text-body-lg)',maxWidth:640}}>{sub}</p>}
@@ -113,20 +113,65 @@ function Spotlight(){
   return <section id="spotlight" style={{padding:'88px 0'}}>
     <div style={container}>
       <SectionHead kicker="Dịch vụ nổi bật" title="Giải pháp OOH của Toàn Cầu" sub="Khám phá các nhóm dịch vụ chính, từ sân bay đến billboard, LED và nhà chờ."/>
-      <div style={{display:'grid',gridTemplateColumns:'220px 1.15fr 1fr',gap:28,alignItems:'stretch'}}>
+      <div className="reveal" style={{display:'grid',gridTemplateColumns:'220px 1.15fr 1fr',gap:28,alignItems:'stretch'}}>
         <div style={{display:'grid',gap:10,alignContent:'start'}}>
-          {FEATURED_SERVICES.map((f,idx)=><button key={f.label} onClick={()=>setI(idx)} style={{display:'flex',alignItems:'center',gap:10,height:56,padding:'0 18px',borderRadius:'var(--radius-md)',border:idx===i?'none':'1px solid var(--border)',background:idx===i?'linear-gradient(115deg,var(--blue-900),var(--blue-500))':'#fff',color:idx===i?'#fff':'var(--foreground)',fontWeight:600,fontSize:'.9375rem',fontFamily:'var(--font-sans)',cursor:'pointer',textAlign:'left',boxShadow:idx===i?'var(--shadow-md)':'none',transition:'all var(--dur-fast) var(--ease-standard)'}}>
+          {FEATURED_SERVICES.map((f,idx)=><button key={f.label} className="tcg-lift" onClick={()=>setI(idx)} style={{display:'flex',alignItems:'center',gap:10,height:56,padding:'0 18px',borderRadius:'var(--radius-md)',border:idx===i?'none':'1px solid var(--border)',background:idx===i?'linear-gradient(115deg,var(--blue-900),var(--blue-500))':'#fff',color:idx===i?'#fff':'var(--foreground)',fontWeight:600,fontSize:'.9375rem',fontFamily:'var(--font-sans)',cursor:'pointer',textAlign:'left',boxShadow:idx===i?'var(--shadow-md)':'none',transition:'all var(--dur-base) var(--ease-out)'}}>
             <window.Icon name={f.icon} size={18}/>{f.label}
           </button>)}
         </div>
-        <div style={{borderRadius:'var(--radius-xl)',overflow:'hidden',border:'1px solid var(--border)',boxShadow:'var(--shadow-md)',minHeight:320}}>
-          <img src={s.img} alt={s.label} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
+        <div className="tcg-card tcg-media" style={{minHeight:320}}>
+          <img key={s.img} className="tcg-fadeup" src={s.img} alt={s.label} style={{width:'100%',height:'100%',objectFit:'cover',display:'block'}}/>
         </div>
-        <div style={{display:'grid',gap:14,alignContent:'center'}}>
+        <div key={s.title} className="tcg-fadeup" style={{display:'grid',gap:14,alignContent:'center'}}>
+          <span style={{display:'inline-flex',alignItems:'center',gap:7,fontSize:'.75rem',fontWeight:700,letterSpacing:'.08em',textTransform:'uppercase',color:'var(--blue-600)'}}><window.Icon name={s.icon} size={15}/>{s.label}</span>
           <h3 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'var(--text-h3)',fontWeight:600,color:'var(--primary)',lineHeight:1.3}}>{s.title}</h3>
-          <p style={{margin:0,fontSize:'.9375rem',color:'var(--slate-600)',lineHeight:1.65}}>{s.desc}</p>
+          <p style={{margin:0,fontSize:'.9375rem',color:'var(--slate-600)',lineHeight:1.7}}>{s.desc}</p>
           <div><Button variant="cta" onClick={()=>{window.location.href=s.href||('services.html#svc-'+s.slug)}}>{s.cta}</Button></div>
         </div>
       </div></div></section>;
 }
 Object.assign(window,{Icon,Navbar,Hero,Stats,SectionHead,Spotlight,go,container});
+
+/* Scroll-FX toàn cục (mọi trang): scroll-reveal + thanh tiến trình. Không dùng React state.
+   MutationObserver bắt cả node do React render sau, nên .reveal luôn được kích hoạt. */
+(function(){
+  if(window.__tcgFx)return;window.__tcgFx=1;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasIO=('IntersectionObserver' in window);
+  function initBar(){
+    if(document.querySelector('.tcg-progress'))return;
+    var bar=document.createElement('div');bar.className='tcg-progress';document.body.appendChild(bar);
+    if(reduce)return;
+    var ticking=false;
+    function onScroll(){if(ticking)return;ticking=true;requestAnimationFrame(function(){
+      var h=document.documentElement.scrollHeight-window.innerHeight;
+      var p=h>0?Math.min(Math.max(window.scrollY/h,0),1):0;
+      bar.style.transform='scaleX('+p+')';ticking=false;});}
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll,{passive:true});onScroll();
+  }
+  var io=null;
+  function ensureIO(){
+    if(io||reduce||!hasIO)return;
+    io=new IntersectionObserver(function(entries){entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target);}});},
+      {threshold:0.14,rootMargin:'0px 0px -8% 0px'});
+  }
+  function reveal(){
+    var els=document.querySelectorAll('.reveal,.reveal-fade,.reveal-scale,.tcg-timeline-line');
+    if(reduce||!hasIO){for(var i=0;i<els.length;i++)els[i].classList.add('is-visible');return;}
+    ensureIO();
+    for(var j=0;j<els.length;j++){var el=els[j];if(!el.__tcgObs){el.__tcgObs=1;io.observe(el);}}
+  }
+  var scheduled=false;
+  function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(function(){scheduled=false;reveal();});}
+  function boot(){
+    initBar();reveal();
+    if('MutationObserver' in window){
+      new MutationObserver(function(muts){
+        for(var i=0;i<muts.length;i++){if(muts[i].addedNodes&&muts[i].addedNodes.length){schedule();break;}}
+      }).observe(document.body,{childList:true,subtree:true});
+    }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
+})();
