@@ -8,7 +8,7 @@ function Icon({name,size=20,color='currentColor',stroke=2}){
 }
 const container={maxWidth:'var(--container-max)',margin:'0 auto',padding:'0 32px'};
 function Navbar({onQuote}){
-  return <header style={{position:'sticky',top:0,zIndex:40,background:'#fff',borderBottom:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'}}>
+  return <header className="tcg-nav" style={{position:'sticky',top:0,zIndex:40,background:'#fff',borderBottom:'1px solid var(--border)',boxShadow:'var(--shadow-sm)'}}>
     <div style={{...container,display:'flex',alignItems:'center',gap:28,height:72}}>
       <a href="index.html" style={{display:'flex',alignItems:'center',gap:10,textDecoration:'none'}}>
         <img src="../../assets/logo-full.png" alt="Toàn Cầu ADV" style={{height:40}}/>
@@ -23,40 +23,88 @@ function Navbar({onQuote}){
       <Button variant="cta" size="sm" onClick={()=>goContact()}>Yêu cầu báo giá</Button>
     </div></header>;
 }
-const HERO_SLIDES=[
-  {img:'../../assets/ooh/phapvan-51a.png',eyebrow:'Từ 2003 đến nay',title:'Hơn 20 năm cùng ngành quảng cáo Việt Nam',body:'Từ tổ chức sự kiện, in ấn đến biển quảng cáo tấm lớn, Toàn Cầu ADV trưởng thành cùng ngành OOH Việt Nam qua từng giai đoạn.'},
-  {img:'../../assets/ooh/noibai-41b.jpg',eyebrow:'Mạng lưới sân bay',title:'Tiếp cận nhóm khách chi trả cao',body:'Hệ thống mặt biển tại Nội Bài, Tân Sơn Nhất và các sân bay lớn, nơi tập trung doanh nhân, khách du lịch và khách quốc tế.'},
-  {img:'../../assets/ooh/phapvan-19a.png',eyebrow:'Toàn quốc',title:'Billboard, LED và nhà chờ phủ khắp các tỉnh thành',body:'~730 vị trí quảng cáo ngoài trời từ cao tốc, cửa ngõ đô thị đến nhà chờ xe bus trên khắp Việt Nam.'},
-  {img:'../../assets/ooh/quangninh-hl16.jpg',eyebrow:'Chuyển đổi số',title:'Bản đồ vị trí và điểm AI gợi ý theo ngành hàng',body:'Tự khám phá vị trí phù hợp, xem điểm AI giải thích rõ lý do, và nhận báo giá PDF trong vài phút.'}
+const HERO_WORDS=[
+  {word:'Billboard',img:'../../assets/ooh/phapvan-51a.png'},
+  {word:'Màn hình LED',img:'../../assets/ooh/hanoi-cg01-nct.png'},
+  {word:'Sân bay',img:'../../assets/ooh/noibai-41b.jpg'},
+  {word:'Nhà chờ xe bus',img:'../../assets/ooh/quangninh-hl16.jpg'}
 ];
-function Hero(){
-  const [i,setI]=React.useState(0);
+function useTypewriter(words,reduce){
+  const [s,setS]=React.useState({w:0,len:reduce?words[0].length:0,del:false});
   React.useEffect(()=>{
-    const t=setInterval(()=>setI(v=>(v+1)%HERO_SLIDES.length),6000);
-    return ()=>clearInterval(t);
-  },[]);
-  const s=HERO_SLIDES[i];
-  return <section id="top" style={{position:'relative',color:'#fff',overflow:'hidden',minHeight:560,background:'var(--blue-900)'}}>
-    <style>{'.hero-cta{transition:transform .2s var(--ease-standard),box-shadow .2s var(--ease-standard)}.hero-cta:hover{transform:translateY(-2px)}.hero-cta:active{transform:translateY(0) scale(.98)}.hero-dot{transition:all .3s var(--ease-standard)}'}</style>
-    <div style={{position:'absolute',right:0,top:0,width:'66%',height:'100%'}}>
-      {HERO_SLIDES.map((sl,idx)=><img key={idx} src={sl.img} alt={sl.title} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',opacity:idx===i?1:0,transform:idx===i?'scale(1.09)':'scale(1)',transition:'opacity 1.1s ease,transform 6.8s ease-out'}}/>)}
-    </div>
-    <svg width="380" height="380" viewBox="0 0 380 380" style={{position:'absolute',top:-50,left:'30%',pointerEvents:'none',zIndex:1}}>
-      <path d="M40 380 C 40 200, 200 40, 380 40" fill="none" stroke="var(--blue-500)" strokeWidth="24" strokeLinecap="round"/>
-      <path d="M10 380 C 10 170, 170 10, 380 10" fill="none" stroke="var(--blue-300)" strokeWidth="6" strokeLinecap="round" opacity="0.85"/>
-    </svg>
-    <div style={{position:'absolute',inset:0,background:'linear-gradient(100deg,var(--blue-900) 0%,var(--blue-900) 38%,rgba(13,47,94,.75) 52%,rgba(13,47,94,0) 70%)'}}></div>
-    <div style={{position:'relative',zIndex:2,...container,padding:'96px 32px'}}>
-      <div className="tcg-fadeup" style={{display:'grid',gap:20,justifyItems:'start',maxWidth:560}}>
-        <span style={{fontSize:'.8125rem',fontWeight:700,letterSpacing:'.1em',textTransform:'uppercase',color:'var(--blue-200)'}}>{s.eyebrow}</span>
-        <h1 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'clamp(2.25rem,3.4vw,3.25rem)',fontWeight:600,lineHeight:1.16,textWrap:'balance'}}>{s.title}</h1>
-        <p style={{margin:0,fontSize:'var(--text-body-lg)',lineHeight:1.6,color:'var(--slate-200)',maxWidth:520}}>{s.body}</p>
-        <div style={{display:'flex',gap:12,flexWrap:'wrap',marginTop:6}}>
-          <button className="hero-cta" onClick={()=>{window.location.href='map.html'}} style={{display:'inline-flex',alignItems:'center',gap:8,height:52,padding:'0 24px',border:'none',borderRadius:'var(--radius-md)',background:'var(--cta)',color:'var(--cta-foreground)',fontWeight:600,fontSize:'1.0625rem',fontFamily:'var(--font-sans)',cursor:'pointer',boxShadow:'var(--shadow-md)'}}><window.Icon name="map" size={19}/> Khám phá bản đồ vị trí</button>
-          <button className="hero-cta" onClick={()=>goContact()} style={{display:'inline-flex',alignItems:'center',gap:8,height:52,padding:'0 24px',border:'1.5px solid rgba(255,255,255,.5)',borderRadius:'var(--radius-md)',background:'transparent',color:'#fff',fontWeight:600,fontSize:'1.0625rem',fontFamily:'var(--font-sans)',cursor:'pointer'}}><window.Icon name="phone-call" size={19}/> Nhận tư vấn</button>
+    if(reduce)return;
+    const word=words[s.w];
+    let delay=s.del?42:88;
+    if(!s.del&&s.len===word.length)delay=2100; // giữ nguyên chữ trước khi xóa
+    if(s.del&&s.len===0)delay=420;             // nghỉ trước khi gõ từ mới
+    const t=setTimeout(()=>setS(p=>{
+      const wd=words[p.w];
+      if(!p.del)return p.len<wd.length?{...p,len:p.len+1}:{...p,del:true};
+      return p.len>0?{...p,len:p.len-1}:{w:(p.w+1)%words.length,len:0,del:false};
+    }),delay);
+    return ()=>clearTimeout(t);
+  },[s,reduce]);
+  return {text:words[s.w].slice(0,s.len),idx:s.w};
+}
+function Hero(){
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const {text,idx}=useTypewriter(HERO_WORDS.map(w=>w.word),reduce);
+  return <section id="top" style={{position:'relative',overflow:'hidden',background:'linear-gradient(118deg,var(--blue-50) 0%,#FFFFFF 44%,var(--blue-100) 100%)'}}>
+    <style>{`
+      .hero-cta{transition:transform .2s var(--ease-standard),box-shadow .2s var(--ease-standard)}.hero-cta:hover{transform:translateY(-2px)}.hero-cta:active{transform:translateY(0) scale(.98)}
+      .tcg-hero-grid{display:grid;grid-template-columns:1fr 1.18fr;gap:56px;align-items:center}
+      @media(max-width:960px){.tcg-hero-grid{grid-template-columns:1fr;gap:44px}}
+      .tcg-caret{display:inline-block;width:3px;height:.92em;margin-left:5px;border-radius:2px;background:var(--blue-600);vertical-align:-0.08em;animation:tcgblink 1s steps(1) infinite}
+      @keyframes tcgblink{50%{opacity:0}}
+      .tcg-hero-float{animation:tcgfloat 5.5s ease-in-out infinite}
+      .tcg-hero-float2{animation:tcgfloat 6.5s ease-in-out -2.6s infinite}
+      @keyframes tcgfloat{50%{transform:translateY(-10px)}}
+      @media(prefers-reduced-motion:reduce){.tcg-caret,.tcg-hero-float,.tcg-hero-float2{animation:none}}
+    `}</style>
+    <div aria-hidden style={{position:'absolute',width:520,height:520,borderRadius:'50%',background:'radial-gradient(circle,rgba(54,143,255,.16),transparent 68%)',top:-160,right:-120,pointerEvents:'none'}}></div>
+    <div aria-hidden style={{position:'absolute',width:420,height:420,borderRadius:'50%',background:'radial-gradient(circle,rgba(54,143,255,.12),transparent 70%)',bottom:-180,left:-140,pointerEvents:'none'}}></div>
+    <div className="tcg-hero-grid" style={{position:'relative',zIndex:1,...container,paddingTop:88,paddingBottom:96}}>
+      <div className="tcg-fadeup" style={{display:'grid',gap:26,justifyItems:'start'}}>
+        <h1 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'clamp(2.5rem,4.3vw,3.9rem)',fontWeight:700,lineHeight:1.1,letterSpacing:'-0.02em',color:'var(--blue-900)'}}>
+          Giải pháp Quảng cáo<br/>
+          <span style={{color:'var(--blue-600)'}}>{text}<span className="tcg-caret" aria-hidden></span></span><br/>
+          Hàng đầu Việt Nam
+        </h1>
+        <p style={{margin:0,fontSize:'var(--text-body-lg)',lineHeight:1.65,color:'var(--slate-600)',maxWidth:520}}>
+          Được hơn 400 nhãn hàng tin chọn trong suốt 20 năm;<br/>
+          vận hành cùng dữ liệu vị trí minh bạch và điểm AI theo ngành hàng.
+        </p>
+        <div style={{display:'flex',gap:14,flexWrap:'wrap',alignItems:'center',marginTop:4}}>
+          <button className="hero-cta" onClick={()=>{window.location.href='map.html'}} style={{display:'inline-flex',alignItems:'center',gap:10,height:54,padding:'0 28px',border:'none',borderRadius:'var(--radius-md)',background:'var(--blue-900)',color:'#fff',fontWeight:600,fontSize:'1.0625rem',fontFamily:'var(--font-sans)',cursor:'pointer',boxShadow:'var(--shadow-md)'}}>Khám phá bản đồ vị trí <window.Icon name="arrow-right" size={19}/></button>
+          <button className="hero-cta" onClick={()=>goContact()} style={{display:'inline-flex',alignItems:'center',gap:8,height:54,padding:'0 22px',border:'1.5px solid var(--slate-300)',borderRadius:'var(--radius-md)',background:'transparent',color:'var(--blue-900)',fontWeight:600,fontSize:'1.0625rem',fontFamily:'var(--font-sans)',cursor:'pointer'}}><window.Icon name="phone-call" size={18}/> Nhận tư vấn</button>
         </div>
-        <div style={{display:'flex',gap:8,marginTop:14}}>
-          {HERO_SLIDES.map((_,idx)=><button key={idx} aria-label={'Slide '+(idx+1)} onClick={()=>setI(idx)} className="hero-dot" style={{width:idx===i?26:8,height:8,borderRadius:4,border:'none',cursor:'pointer',background:idx===i?'#fff':'rgba(255,255,255,.4)'}}></button>)}
+        <div aria-hidden style={{width:'100%',maxWidth:460,borderTop:'2px dashed var(--slate-300)',marginTop:18}}></div>
+        <div style={{display:'flex',gap:48,flexWrap:'wrap'}}>
+          {[[730,'+','Vị trí quảng cáo toàn quốc'],[400,'+','Nhãn hàng đồng hành'],[20,'+','Năm kinh nghiệm']].map(([n,s,l])=>
+            <div key={l} style={{display:'grid',gap:4}}>
+              <strong data-countup={n} data-suffix={s} style={{fontFamily:'var(--font-display)',fontSize:'1.875rem',fontWeight:700,color:'var(--blue-900)',letterSpacing:'-0.01em'}}>{n+s}</strong>
+              <span style={{fontSize:'.875rem',color:'var(--slate-500)'}}>{l}</span>
+            </div>)}
+        </div>
+      </div>
+      <div className="tcg-fadeup" style={{position:'relative',minHeight:340}}>
+        <div data-parallax="0.06" style={{position:'relative',borderRadius:'var(--radius-xl,20px)',overflow:'hidden',boxShadow:'var(--shadow-lg)',aspectRatio:'4/3',background:'var(--blue-100)'}}>
+          {HERO_WORDS.map((w,k)=><img key={w.img} src={w.img} alt={'Quảng cáo '+w.word+' — Toàn Cầu ADV'} loading={k===0?'eager':'lazy'} style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover',opacity:k===idx?1:0,transform:k===idx?'scale(1.04)':'scale(1)',transition:'opacity .9s ease,transform 6s ease-out'}}/>)}
+          <div aria-hidden style={{position:'absolute',inset:0,background:'linear-gradient(180deg,transparent 55%,rgba(13,47,94,.35))'}}></div>
+        </div>
+        <div className="tcg-hero-float" style={{position:'absolute',top:-18,left:-26,display:'flex',alignItems:'center',gap:10,padding:'12px 16px',borderRadius:'var(--radius-md)',background:'#fff',boxShadow:'var(--shadow-lg)',border:'1px solid var(--slate-200)'}}>
+          <span style={{display:'grid',placeItems:'center',width:36,height:36,borderRadius:10,background:'var(--blue-50)',color:'var(--blue-600)'}}><window.Icon name="sparkles" size={18}/></span>
+          <span style={{display:'grid',lineHeight:1.25}}>
+            <strong style={{fontSize:'.9375rem',color:'var(--blue-900)'}}>Điểm AI 92/100</strong>
+            <span style={{fontSize:'.75rem',color:'var(--slate-500)'}}>Gợi ý theo ngành hàng</span>
+          </span>
+        </div>
+        <div className="tcg-hero-float2" style={{position:'absolute',bottom:-20,right:-14,display:'flex',alignItems:'center',gap:10,padding:'12px 16px',borderRadius:'var(--radius-md)',background:'#fff',boxShadow:'var(--shadow-lg)',border:'1px solid var(--slate-200)'}}>
+          <span style={{display:'grid',placeItems:'center',width:36,height:36,borderRadius:10,background:'var(--blue-50)',color:'var(--blue-600)'}}><window.Icon name="map-pin" size={18}/></span>
+          <span style={{display:'grid',lineHeight:1.25}}>
+            <strong style={{fontSize:'.9375rem',color:'var(--blue-900)'}}>~730 vị trí</strong>
+            <span style={{fontSize:'.75rem',color:'var(--slate-500)'}}>Phủ khắp 30+ tỉnh thành</span>
+          </span>
         </div>
       </div>
     </div></section>;
@@ -159,15 +207,89 @@ Object.assign(window,{Icon,Navbar,Hero,Stats,SectionHead,Spotlight,go,goContact,
       {threshold:0.14,rootMargin:'0px 0px -8% 0px'});
   }
   function reveal(){
-    var els=document.querySelectorAll('.reveal,.reveal-fade,.reveal-scale,.tcg-timeline-line');
+    var els=document.querySelectorAll('.reveal,.reveal-fade,.reveal-scale,.reveal-group,.tcg-timeline-line');
     if(reduce||!hasIO){for(var i=0;i<els.length;i++)els[i].classList.add('is-visible');return;}
     ensureIO();
     for(var j=0;j<els.length;j++){var el=els[j];if(!el.__tcgObs){el.__tcgObs=1;io.observe(el);}}
   }
+  // Đếm số tăng dần khi vào khung nhìn: <strong data-countup="730" data-suffix="+">730+</strong>
+  var cio=null;
+  function animateCount(el){
+    var target=parseFloat(el.getAttribute('data-countup'))||0;
+    var prefix=el.getAttribute('data-prefix')||'',suffix=el.getAttribute('data-suffix')||'';
+    var t0=null,dur=1400;
+    function step(ts){
+      if(!t0)t0=ts;
+      var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,3);
+      el.textContent=prefix+Math.round(target*e)+suffix;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  function counts(){
+    if(reduce||!hasIO)return; // giữ giá trị tĩnh sẵn có trong markup
+    var els=document.querySelectorAll('[data-countup]');
+    for(var i=0;i<els.length;i++){
+      var el=els[i];if(el.__tcgCnt)continue;el.__tcgCnt=1;
+      if(!cio)cio=new IntersectionObserver(function(es){es.forEach(function(e){
+        if(e.isIntersecting){cio.unobserve(e.target);animateCount(e.target);}});},{threshold:.5});
+      cio.observe(el);
+    }
+  }
+  // Parallax nhẹ cho khối trang trí/ảnh: <div data-parallax="0.07">. Chỉ transform, không reflow.
+  var pEls=[],pTick=false;
+  function parallaxScroll(){
+    if(pTick)return;pTick=true;
+    requestAnimationFrame(function(){
+      pTick=false;
+      var vh=window.innerHeight;
+      for(var i=0;i<pEls.length;i++){
+        var el=pEls[i],r=el.getBoundingClientRect();
+        if(r.bottom<-80||r.top>vh+80)continue;
+        var applied=el.__tcgOff||0;
+        var center=r.top-applied+r.height/2-vh/2;
+        var off=center*(parseFloat(el.getAttribute('data-parallax'))||0.07);
+        off=Math.max(-36,Math.min(36,off));
+        el.__tcgOff=off;
+        el.style.transform='translateY('+off.toFixed(1)+'px)';
+      }
+    });
+  }
+  function parallax(){
+    if(reduce)return;
+    var els=document.querySelectorAll('[data-parallax]'),added=false;
+    for(var i=0;i<els.length;i++){if(!els[i].__tcgPar){els[i].__tcgPar=1;els[i].style.willChange='transform';pEls.push(els[i]);added=true;}}
+    if(added&&!window.__tcgParOn){
+      window.__tcgParOn=1;
+      window.addEventListener('scroll',parallaxScroll,{passive:true});
+      window.addEventListener('resize',parallaxScroll,{passive:true});
+    }
+    if(added)parallaxScroll();
+  }
+  // Navbar đổ bóng/thu gọn khi rời đỉnh trang + nút lên đầu trang sau ~1.6 màn hình
+  function navTop(){
+    if(!document.querySelector('.tcg-totop')){
+      var b=document.createElement('button');
+      b.className='tcg-totop';b.type='button';b.setAttribute('aria-label','Lên đầu trang');
+      b.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';
+      b.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'})});
+      document.body.appendChild(b);
+    }
+    if(!window.__tcgNavOn){
+      window.__tcgNavOn=1;
+      var on=function(){
+        var n=document.querySelector('.tcg-nav');
+        if(n)n.classList.toggle('is-scrolled',window.scrollY>10);
+        var t=document.querySelector('.tcg-totop');
+        if(t)t.classList.toggle('show',window.scrollY>window.innerHeight*1.6);
+      };
+      window.addEventListener('scroll',on,{passive:true});on();
+    }
+  }
   var scheduled=false;
-  function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(function(){scheduled=false;reveal();});}
+  function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(function(){scheduled=false;reveal();counts();parallax();navTop();});}
   function boot(){
-    initBar();reveal();
+    initBar();reveal();counts();parallax();navTop();
     // Anchor trong hash (vd. #lien-he) do React render sau khi load — chờ phần tử xuất hiện rồi cuộn tới.
     if(location.hash&&/^#[\w-]+$/.test(location.hash)){
       var tries=0,tt=setInterval(function(){

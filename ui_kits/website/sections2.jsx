@@ -249,11 +249,11 @@ function LeadForm({onToast}){
       <div className="reveal" style={{display:'grid',gap:16}}>
         <h2 style={{margin:0,fontFamily:'var(--font-display)',fontSize:'var(--text-h2)',fontWeight:600,color:'var(--primary)',lineHeight:1.18}}>Nhận tư vấn OOH miễn phí</h2>
         <p style={{margin:0,fontSize:'var(--text-body-lg)',color:'var(--slate-600)'}}>Để lại thông tin, đội ngũ Toàn Cầu liên hệ trong 24h.</p>
-        <ul style={{margin:0,padding:0,listStyle:'none',display:'grid',gap:10}}>
+        <ul className="reveal-group" style={{margin:0,padding:0,listStyle:'none',display:'grid',gap:10}}>
           {['Tư vấn vị trí theo ngành hàng, có điểm AI gợi ý','Báo giá PDF nháp trong vài phút, 24/7','Khảo sát và thi công trọn gói toàn quốc','20 năm kinh nghiệm, 400+ nhãn hàng đã hợp tác'].map(x=><li key={x} style={{display:'flex',gap:10,alignItems:'center',fontWeight:500}}><span style={{color:'var(--success)',fontWeight:700}}>✓</span>{x}</li>)}
         </ul>
         <div style={{display:'flex',gap:28,padding:'14px 0',borderTop:'1px solid var(--border)',borderBottom:'1px solid var(--border)'}}>
-          {[['20+','Năm OOH'],['~730','Vị trí'],['30+','Tỉnh/thành']].map(([v,l])=><div key={l} style={{display:'grid',gap:2}}><strong style={{fontFamily:'var(--font-mono)',fontSize:'1.5rem',color:'var(--primary)'}}>{v}</strong><span style={{fontSize:'.75rem',fontWeight:600,letterSpacing:'.06em',textTransform:'uppercase',color:'var(--muted-foreground)'}}>{l}</span></div>)}
+          {[[20,'','+','Năm OOH'],[730,'~','','Vị trí'],[30,'','+','Tỉnh/thành']].map(([n,p,s,l])=><div key={l} style={{display:'grid',gap:2}}><strong data-countup={n} data-prefix={p} data-suffix={s} style={{fontFamily:'var(--font-mono)',fontSize:'1.5rem',color:'var(--primary)'}}>{p+n+s}</strong><span style={{fontSize:'.75rem',fontWeight:600,letterSpacing:'.06em',textTransform:'uppercase',color:'var(--muted-foreground)'}}>{l}</span></div>)}
         </div>
         <div style={{display:'grid',gap:8}}>
           <span style={{fontSize:'.875rem',color:'var(--slate-600)'}}>Cần tư vấn ngay? Gọi trực tiếp:</span>
@@ -284,15 +284,46 @@ function LeadForm({onToast}){
     </div></section>;
 }
 function CTABand(){
-  return <section style={{background:'var(--navy-800)',padding:'64px 0'}}>
-    <div className="reveal" style={{...window.container,display:'grid',gap:20,justifyItems:'center',textAlign:'center'}}>
-      <h2 style={{margin:0,color:'#fff',fontFamily:'var(--font-display)',fontSize:'var(--text-h2)',fontWeight:600,textWrap:'balance'}}>Sẵn sàng tìm vị trí OOH cho chiến dịch tiếp theo?</h2>
-      <div style={{display:'flex',gap:12,flexWrap:'wrap',justifyContent:'center'}}>
-        <Button variant="outline-inverse" size="lg" onClick={()=>{window.location.href='map.html'}}>Khám phá bản đồ vị trí</Button>
-        <Button variant="cta" size="lg" onClick={()=>window.goContact()}>Yêu cầu báo giá</Button>
+  return <section className="tcg-ctaband" style={{position:'relative',zIndex:2,padding:'48px 0 0'}}>
+    <style>{`
+      .tcg-cta-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+      @media(max-width:960px){.tcg-cta-grid{grid-template-columns:1fr;gap:36px}}
+      .tcg-cta-btn{transition:transform .2s var(--ease-standard),box-shadow .2s var(--ease-standard)}.tcg-cta-btn:hover{transform:translateY(-2px)}.tcg-cta-btn:active{transform:translateY(0) scale(.98)}
+      .tcg-cta-img{animation:tcgctafloat 6s ease-in-out infinite}
+      @keyframes tcgctafloat{50%{transform:translateY(-8px)}}
+      @media(prefers-reduced-motion:reduce){.tcg-cta-img{animation:none}}
+      .tcg-ctaband+footer{padding-top:168px!important}
+    `}</style>
+    <div style={{...window.container,marginBottom:-84}}>
+      <div className="reveal tcg-cta-grid" style={{borderRadius:28,background:'linear-gradient(120deg,var(--blue-100) 0%,var(--blue-50) 100%)',padding:'clamp(36px,5vw,72px)',boxShadow:'var(--shadow-lg)'}}>
+        <div style={{display:'grid',gap:20,justifyItems:'start'}}>
+          <h2 style={{margin:0,color:'var(--blue-900)',fontFamily:'var(--font-display)',fontSize:'clamp(1.75rem,2.6vw,2.5rem)',fontWeight:700,lineHeight:1.18,letterSpacing:'-0.01em',textWrap:'balance'}}>Sẵn sàng tìm vị trí OOH cho chiến dịch tiếp theo?</h2>
+          <p style={{margin:0,fontSize:'var(--text-body-lg)',lineHeight:1.65,color:'var(--slate-600)',maxWidth:480}}>
+            Dù bạn là nhãn hàng, agency hay chủ mặt bằng,<br/>
+            Toàn Cầu ADV có dữ liệu và đội ngũ để chiến dịch của bạn thành công.
+          </p>
+          <div style={{display:'flex',gap:14,flexWrap:'wrap',alignItems:'center',marginTop:8}}>
+            <button className="tcg-cta-btn" onClick={()=>window.goContact()} style={{display:'inline-flex',alignItems:'center',gap:10,height:54,padding:'0 28px',border:'none',borderRadius:'var(--radius-md)',background:'var(--blue-900)',color:'#fff',fontWeight:600,fontSize:'1.0625rem',fontFamily:'var(--font-sans)',cursor:'pointer',boxShadow:'var(--shadow-md)'}}>Yêu cầu báo giá <window.Icon name="arrow-right" size={19}/></button>
+            <button className="tcg-cta-btn" onClick={()=>{window.location.href='map.html'}} style={{display:'inline-flex',alignItems:'center',gap:8,height:54,padding:'0 22px',border:'1.5px solid var(--blue-300)',borderRadius:'var(--radius-md)',background:'transparent',color:'var(--blue-900)',fontWeight:600,fontSize:'1.0625rem',fontFamily:'var(--font-sans)',cursor:'pointer'}}><window.Icon name="map" size={18}/> Khám phá bản đồ vị trí</button>
+          </div>
+          <span style={{fontSize:'.8125rem',color:'var(--slate-500)'}}>Bạn là chủ biển muốn cho thuê? Sàn OOH sắp ra mắt.</span>
+        </div>
+        <div className="tcg-cta-img" style={{position:'relative'}}>
+          <div data-parallax="0.05" style={{position:'relative',borderRadius:18,overflow:'hidden',boxShadow:'var(--shadow-lg)',aspectRatio:'16/10',background:'var(--blue-200)'}}>
+            <img src="../../assets/ooh/quangninh-hl30-cta.jpg" alt="Billboard Toàn Cầu ADV trên cầu Bãi Cháy, Hạ Long — vòng quay Mặt Trời phía xa" loading="lazy" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+            <div aria-hidden style={{position:'absolute',inset:0,background:'linear-gradient(180deg,transparent 60%,rgba(13,47,94,.3))'}}></div>
+          </div>
+          <div style={{position:'absolute',bottom:-16,left:-14,display:'flex',alignItems:'center',gap:9,padding:'10px 15px',borderRadius:'var(--radius-md)',background:'#fff',boxShadow:'var(--shadow-lg)',border:'1px solid var(--slate-200)'}}>
+            <span style={{display:'grid',placeItems:'center',width:32,height:32,borderRadius:9,background:'var(--blue-50)',color:'var(--blue-600)'}}><window.Icon name="ferris-wheel" size={17}/></span>
+            <span style={{display:'grid',lineHeight:1.25}}>
+              <strong style={{fontSize:'.875rem',color:'var(--blue-900)'}}>Cầu Bãi Cháy — Hạ Long</strong>
+              <span style={{fontSize:'.71875rem',color:'var(--slate-500)'}}>Thương hiệu của bạn trên hành trình mỗi ngày</span>
+            </span>
+          </div>
+        </div>
       </div>
-      <span style={{fontSize:'.8125rem',color:'var(--slate-400)'}}>Bạn là chủ biển muốn cho thuê? Sàn OOH sắp ra mắt.</span>
-    </div></section>;
+    </div>
+  </section>;
 }
 const socialCircle={width:36,height:36,borderRadius:'var(--radius-full)',border:'1px solid var(--border)',display:'grid',placeItems:'center',color:'var(--primary)',cursor:'pointer'};
 function Footer(){
@@ -332,7 +363,7 @@ function Footer(){
           <span style={{position:'absolute',right:10,bottom:8,fontSize:'.6875rem',color:'var(--slate-500)'}}>Bản đồ minh hoạ. Production: nhúng Google Maps.</span>
         </div>
       </div>
-      <div style={{borderTop:'1px solid var(--border)',paddingTop:32,display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:32}}>
+      <div className="reveal-group" style={{borderTop:'1px solid var(--border)',paddingTop:32,display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:32}}>
         {col('Doanh nghiệp',[['Về Toàn Cầu','./about.html'],'Khách hàng','Tin tức','Tuyển dụng','Liên hệ'])}
         {col('Dịch vụ',['Quảng cáo sân bay','Billboard · Pano','Màn hình LED','Nhà chờ xe bus'])}
         {col('Vị trí OOH',['Bản đồ vị trí','Theo tỉnh/thành','Vị trí còn trống'])}

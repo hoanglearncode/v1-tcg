@@ -283,15 +283,46 @@ function LeadForm({onToast}){
     </div></section>;
 }
 function CTABand(){
-  return <section style={{background:'var(--navy-800)',padding:'64px 0'}}>
-    <div style={{...window.container,display:'grid',gap:20,justifyItems:'center',textAlign:'center'}}>
-      <h2 style={{margin:0,color:'#fff',fontFamily:'var(--font-display)',fontSize:'var(--text-h2)',fontWeight:600,textWrap:'balance'}}>Sẵn sàng tìm vị trí OOH cho chiến dịch tiếp theo?</h2>
-      <div style={{display:'flex',gap:12,flexWrap:'wrap',justifyContent:'center'}}>
-        <Button variant="outline-inverse" size="lg" onClick={()=>{window.location.href='map.html'}}>Khám phá bản đồ vị trí</Button>
-        <Button variant="cta" size="lg" onClick={()=>window.goContact()}>Yêu cầu báo giá</Button>
+  return <section className="tcg-ctaband" style={{position:'relative',zIndex:2,padding:'48px 0 0'}}>
+    <style>{`
+      .tcg-cta-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+      @media(max-width:960px){.tcg-cta-grid{grid-template-columns:1fr;gap:36px}}
+      .tcg-cta-btn{transition:transform .2s var(--ease-standard),box-shadow .2s var(--ease-standard)}.tcg-cta-btn:hover{transform:translateY(-2px)}.tcg-cta-btn:active{transform:translateY(0) scale(.98)}
+      .tcg-cta-img{animation:tcgctafloat 6s ease-in-out infinite}
+      @keyframes tcgctafloat{50%{transform:translateY(-8px)}}
+      @media(prefers-reduced-motion:reduce){.tcg-cta-img{animation:none}}
+      .tcg-ctaband+footer{padding-top:168px!important}
+    `}</style>
+    <div style={{...window.container,marginBottom:-84}}>
+      <div className="tcg-cta-grid" style={{borderRadius:28,background:'linear-gradient(120deg,var(--blue-100) 0%,var(--blue-50) 100%)',padding:'clamp(36px,5vw,72px)',boxShadow:'var(--shadow-lg)'}}>
+        <div style={{display:'grid',gap:20,justifyItems:'start'}}>
+          <h2 style={{margin:0,color:'var(--blue-900)',fontFamily:'var(--font-display)',fontSize:'clamp(1.75rem,2.6vw,2.5rem)',fontWeight:700,lineHeight:1.18,letterSpacing:'-0.01em',textWrap:'balance'}}>Sẵn sàng tìm vị trí OOH cho chiến dịch tiếp theo?</h2>
+          <p style={{margin:0,fontSize:'var(--text-body-lg)',lineHeight:1.65,color:'var(--slate-600)',maxWidth:480}}>
+            Dù bạn là nhãn hàng, agency hay chủ mặt bằng,<br/>
+            Toàn Cầu ADV có dữ liệu và đội ngũ để chiến dịch của bạn thành công.
+          </p>
+          <div style={{display:'flex',gap:14,flexWrap:'wrap',alignItems:'center',marginTop:8}}>
+            <button className="tcg-cta-btn" onClick={()=>window.goContact()} style={{display:'inline-flex',alignItems:'center',gap:10,height:54,padding:'0 28px',border:'none',borderRadius:'var(--radius-md)',background:'var(--blue-900)',color:'#fff',fontWeight:600,fontSize:'1.0625rem',fontFamily:'var(--font-sans)',cursor:'pointer',boxShadow:'var(--shadow-md)'}}>Yêu cầu báo giá <window.Icon name="arrow-right" size={19}/></button>
+            <button className="tcg-cta-btn" onClick={()=>{window.location.href='map.html'}} style={{display:'inline-flex',alignItems:'center',gap:8,height:54,padding:'0 22px',border:'1.5px solid var(--blue-300)',borderRadius:'var(--radius-md)',background:'transparent',color:'var(--blue-900)',fontWeight:600,fontSize:'1.0625rem',fontFamily:'var(--font-sans)',cursor:'pointer'}}><window.Icon name="map" size={18}/> Khám phá bản đồ vị trí</button>
+          </div>
+          <span style={{fontSize:'.8125rem',color:'var(--slate-500)'}}>Bạn là chủ biển muốn cho thuê? Sàn OOH sắp ra mắt.</span>
+        </div>
+        <div className="tcg-cta-img" style={{position:'relative'}}>
+          <div style={{position:'relative',borderRadius:18,overflow:'hidden',boxShadow:'var(--shadow-lg)',aspectRatio:'16/10',background:'var(--blue-200)'}}>
+            <img src="../../assets/ooh/quangninh-hl30-cta.jpg" alt="Billboard Toàn Cầu ADV trên cầu Bãi Cháy, Hạ Long — vòng quay Mặt Trời phía xa" loading="lazy" style={{position:'absolute',inset:0,width:'100%',height:'100%',objectFit:'cover'}}/>
+            <div aria-hidden style={{position:'absolute',inset:0,background:'linear-gradient(180deg,transparent 60%,rgba(13,47,94,.3))'}}></div>
+          </div>
+          <div style={{position:'absolute',bottom:-16,left:-14,display:'flex',alignItems:'center',gap:9,padding:'10px 15px',borderRadius:'var(--radius-md)',background:'#fff',boxShadow:'var(--shadow-lg)',border:'1px solid var(--slate-200)'}}>
+            <span style={{display:'grid',placeItems:'center',width:32,height:32,borderRadius:9,background:'var(--blue-50)',color:'var(--blue-600)'}}><window.Icon name="ferris-wheel" size={17}/></span>
+            <span style={{display:'grid',lineHeight:1.25}}>
+              <strong style={{fontSize:'.875rem',color:'var(--blue-900)'}}>Cầu Bãi Cháy — Hạ Long</strong>
+              <span style={{fontSize:'.71875rem',color:'var(--slate-500)'}}>Thương hiệu của bạn trên hành trình mỗi ngày</span>
+            </span>
+          </div>
+        </div>
       </div>
-      <span style={{fontSize:'.8125rem',color:'var(--slate-400)'}}>Bạn là chủ biển muốn cho thuê? Sàn OOH sắp ra mắt.</span>
-    </div></section>;
+    </div>
+  </section>;
 }
 const socialCircle={width:36,height:36,borderRadius:'var(--radius-full)',border:'1px solid var(--border)',display:'grid',placeItems:'center',color:'var(--primary)',cursor:'pointer'};
 function Footer(){
